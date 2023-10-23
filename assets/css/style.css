@@ -11,3 +11,7 @@
     /* Ajuste a altura máxima conforme necessário */
     object-fit: cover;
 }
+
+.card-img-top {
+    object-fit: contain;
+}
