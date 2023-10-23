@@ -1,5 +1,13 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.banner-img {
+    width: 100%;
+    height: auto;
+    max-height: 55vh;
+    /* Ajuste a altura máxima conforme necessário */
+    object-fit: cover;
 }
