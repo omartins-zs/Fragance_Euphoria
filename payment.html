@@ -141,6 +141,36 @@
                         </div>
                     </div>
 
+                    <div class="card-body border p-0">
+                        <p>
+                            <a class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-between"
+                                data-bs-toggle="collapse" href="#pixPagamento" role="button" aria-expanded="true"
+                                aria-controls="pixPagamento">
+                                <span class="font-weight-bolder">PIX</span>
+                                <span class="fab fa-cc-paypal"></span>
+                            </a>
+                        </p>
+                        <div class="collapse show p-3 pt-0" id="pixPagamento">
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" placeholder="Digite seu CPF" class="form-control">
+                                    <button class="btn btn-secondary mt-3">Gerar QR Code PIX</button>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex">
+                                        <input type="text" class="form-control" value="Código PIX" readonly>
+                                        <button class="btn btn-secondary" onclick="copyToClipboard()">Copiar</button>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="d-flex justify-content-end">
+                                        <img src="./assets/img/qrcode.jpg" width="150" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
