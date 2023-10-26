@@ -63,191 +63,185 @@
 
     <div class="container">
         <div class="row">
+
             <div class="col-12">
-                <div class="card p-3">
 
-                    <div class="card-body border p-0">
-                        <p>
-                            <a class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-between"
-                                data-bs-toggle="collapse" href="#enderecoCobranca" role="button" aria-expanded="true"
-                                aria-controls="enderecoCobranca">
-                                <span class="font-weight-bolder">Endereço de Cobrança</span>
-                                <span class="fab fa-cc-paypal"></span>
-                            </a>
-                        </p>
-                        <div class="collapse show p-3 pt-0" id="enderecoCobranca">
-                            <form>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Nome</label>
-                                        <input type="text" class="form-control" id="inputPassword4">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Email</label>
-                                        <input type="email" class="form-control" id="inputEmail4">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputAddress">Endereco</label>
-                                    <input type="text" class="form-control" id="inputAddress"
-                                        placeholder="1234 Main St">
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-2">
-                                        <label for="inputZip">CEP</label>
-                                        <input type="text" class="form-control" id="inputZip">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputCity">Cidade</label>
-                                        <input type="text" class="form-control" id="inputCity">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="inputState">Estado</label>
-                                        <select id="inputState" class="form-control">
-                                            <option value="" selected disabled>Selecione um estado</option>
-                                            <option value="AC">Acre</option>
-                                            <option value="AL">Alagoas</option>
-                                            <option value="AP">Amapá</option>
-                                            <option value="AM">Amazonas</option>
-                                            <option value="BA">Bahia</option>
-                                            <option value="CE">Ceará</option>
-                                            <option value="DF">Distrito Federal</option>
-                                            <option value="ES">Espírito Santo</option>
-                                            <option value="GO">Goiás</option>
-                                            <option value="MA">Maranhão</option>
-                                            <option value="MT">Mato Grosso</option>
-                                            <option value="MS">Mato Grosso do Sul</option>
-                                            <option value="MG">Minas Gerais</option>
-                                            <option value="PA">Pará</option>
-                                            <option value="PB">Paraíba</option>
-                                            <option value="PR">Paraná</option>
-                                            <option value="PE">Pernambuco</option>
-                                            <option value="PI">Piauí</option>
-                                            <option value="RJ">Rio de Janeiro</option>
-                                            <option value="RN">Rio Grande do Norte</option>
-                                            <option value="RS">Rio Grande do Sul</option>
-                                            <option value="RO">Rondônia</option>
-                                            <option value="RR">Roraima</option>
-                                            <option value="SC">Santa Catarina</option>
-                                            <option value="SP">São Paulo</option>
-                                            <option value="SE">Sergipe</option>
-                                            <option value="TO">Tocantins</option>
-                                        </select>
-                                    </div>
-                                </div>
+                <div class="card border-0">
 
-                                <button type="submit" class="btn btn-primary float-right">Sign in</button>
-                            </form>
-                        </div>
+                    <button type="button" class="btn btn-primary d-flex justify-content-between align-items-center mb-5 mt-3"
+                        data-toggle="collapse" data-target="#demo">
+                        <span class="">Endereço de
+                            Cobrança</span>
+                        <span class="fas fa-map-marked-alt"></span>
+
+                    </button>
+                    <div id="demo" class="collapse my-4">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Nome</label>
+                                    <input type="text" class="form-control" id="inputPassword4">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Email</label>
+                                    <input type="email" class="form-control" id="inputEmail4">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress">Endereco</label>
+                                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label for="inputZip">CEP</label>
+                                    <input type="text" class="form-control" id="inputZip">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputCity">Cidade</label>
+                                    <input type="text" class="form-control" id="inputCity">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputState">Estado</label>
+                                    <select id="inputState" class="form-control">
+                                        <option value="" selected disabled>Selecione um estado</option>
+                                        <option value="AC">Acre</option>
+                                        <option value="AL">Alagoas</option>
+                                        <option value="AP">Amapá</option>
+                                        <option value="AM">Amazonas</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="TO">Tocantins</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary float-right">Sign in</button>
+                        </form>
                     </div>
+                </div>
 
-                    <div class="card-body border p-0">
-                        <p>
-                            <a class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-between"
-                                data-bs-toggle="collapse" href="#pixPagamento" role="button" aria-expanded="true"
-                                aria-controls="pixPagamento">
-                                <span class="font-weight-bolder">PIX</span>
-                                <span class="fab fa-cc-paypal"></span>
-                            </a>
-                        </p>
-                        <div class="collapse show p-3 pt-0" id="pixPagamento">
-                            <div class="row">
-                                <div class="col">
-                                    <input type="text" placeholder="Digite seu CPF" class="form-control">
-                                    <button class="btn btn-secondary mt-3">Gerar QR Code PIX</button>
+                <div class="card border-0">
+                    <button type="button" class="btn btn-primary d-flex justify-content-between align-items-center mb-5"
+                        data-toggle="collapse" data-target="#demo2">
+                        <span class="">PIX</span>
+                        <span class="fab fa-cc-paypal"></span>
+                    </button>
+
+                    <div id="demo2" class="collapse my-4">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" placeholder="Digite seu CPF" class="form-control">
+                                <button class="btn btn-secondary mt-3">Gerar QR Code PIX</button>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex">
+                                    <input type="text" class="form-control" value="Código PIX" readonly>
+                                    <button class="btn btn-secondary" onclick="copyToClipboard()">Copiar</button>
                                 </div>
-                                <div class="col-6">
-                                    <div class="d-flex">
-                                        <input type="text" class="form-control" value="Código PIX" readonly>
-                                        <button class="btn btn-secondary" onclick="copyToClipboard()">Copiar</button>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="d-flex justify-content-end">
-                                        <img src="./assets/img/qrcode.jpg" width="150" alt="">
-                                    </div>
+                            </div>
+                            <div class="col">
+                                <div class="d-flex justify-content-end">
+                                    <img src="./assets/img/qrcode.jpg" width="150" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body border p-0">
-                        <p>
-                            <a class="btn btn-primary p-2 w-100 h-100 d-flex align-items-center justify-content-between"
-                                data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true"
-                                aria-controls="collapseExample">
-                                <span class="font-weight-bolder">Cartão de Crédito</span>
-                                <span class="">
-                                    <span class="fab fa-cc-amex"></span>
-                                    <span class="fab fa-cc-mastercard"></span>
-                                    <span class="fab fa-cc-discover"></span>
-                                </span>
-                            </a>
-                        </p>
-                        <div class="collapse show p-3 pt-0" id="collapseExample">
-                            <div class="row">
-                                <div class="col-lg-5 mb-lg-0 mb-3">
-                                    <p class="h4 mb-0">Resumo</p>
-                                    <p class="mb-0"><span class="font-weight-bolder">Produto: </span><span
-                                            class="text-success">Nome do
-                                            produto</span></p>
-                                    <p class="mb-0">
-                                        <span class="font-weight-bolder">Preço: </span>
-                                        <span class="text-success">R$452.90</span>
-                                    </p>
-                                </div>
-                                <div class="col-lg-7">
-                                    <form action="" class="form">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="form__div">
-                                                    <label for="" class="form__label">Número do Cartão</label>
-                                                    <input type="text" class="form-control" placeholder=" ">
-                                                </div>
-                                            </div>
+                </div>
 
-                                            <div class="col-4">
-                                                <div class="form__div">
-                                                    <label for="" class="form__label">Validade(MM/aa)</label>
-                                                    <input type="text" class="form-control" placeholder=" ">
-                                                </div>
-                                            </div>
 
-                                            <div class="col-4">
-                                                <div class="form__div">
-                                                    <label for="" class="form__label">Código CVV</label>
-                                                    <input type="password" class="form-control" placeholder=" ">
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="form__div">
-                                                    <label for="">Parcelas</label>
-                                                    <select class="form-control" aria-label="Número de Parcelas">
-                                                        <option selected>Parcelas</option>
-                                                        <option value="1">1 parcela</option>
-                                                        <option value="2">2 parcelas</option>
-                                                        <option value="3">3 parcelas</option>
-                                                        <option value="4">4 parcelas</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 mb-2">
-                                                <div class="form__div">
-                                                    <label for="" class="form__label">Nome no Cartão</label>
-                                                    <input type="text" class="form-control" placeholder=" ">
-                                                </div>
-                                            </div>
+                <div class="card border-0">
+                    <button type="button" class="btn btn-primary d-flex justify-content-between align-items-center mb-5"
+                        data-toggle="collapse" data-target="#demo3">
+                        <span class="">Cartão de Crédito</span>
+                        <span class="d-flex">
+                            <span class="fab fa-cc-amex mx-1"></span>
+                            <span class="fab fa-cc-mastercard mx-1"></span>
+                            <span class="fab fa-cc-discover mx-1"></span>
+                        </span>
+                    </button>
 
-                                            <div class="col-12">
-                                                <div class="btn btn-primary w-100">Finalizar compra</div>
+                    <div id="demo3" class="collapse my-4">
+                        <div class="row">
+                            <div class="col-lg-5 mb-lg-0 mb-3">
+                                <p class="h4 mb-0">Resumo</p>
+                                <p class="mb-0"><span class="font-weight-bolder">Produto: </span><span
+                                        class="text-success">Nome do
+                                        produto</span></p>
+                                <p class="mb-0">
+                                    <span class="font-weight-bolder">Preço: </span>
+                                    <span class="text-success">R$452.90</span>
+                                </p>
+                            </div>
+                            <div class="col-lg-7">
+                                <form action="" class="form">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form__div">
+                                                <label for="" class="form__label">Número do Cartão</label>
+                                                <input type="text" class="form-control" placeholder=" ">
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
+
+                                        <div class="col-4">
+                                            <div class="form__div">
+                                                <label for="" class="form__label">Validade(MM/aa)</label>
+                                                <input type="text" class="form-control" placeholder=" ">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4">
+                                            <div class="form__div">
+                                                <label for="" class="form__label">Código CVV</label>
+                                                <input type="password" class="form-control" placeholder=" ">
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form__div">
+                                                <label for="">Parcelas</label>
+                                                <select class="form-control" aria-label="Número de Parcelas">
+                                                    <option selected>Parcelas</option>
+                                                    <option value="1">1 parcela</option>
+                                                    <option value="2">2 parcelas</option>
+                                                    <option value="3">3 parcelas</option>
+                                                    <option value="4">4 parcelas</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mb-2">
+                                            <div class="form__div">
+                                                <label for="" class="form__label">Nome no Cartão</label>
+                                                <input type="text" class="form-control" placeholder=" ">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="btn btn-primary w-100">Finalizar compra</div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
 
