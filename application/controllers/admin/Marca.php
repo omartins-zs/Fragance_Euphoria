@@ -63,6 +63,18 @@ class Marca extends MY_Controller
 		$this->load->view('admin/layout_main_admin');
 	}
 
+
+	public function update($id)
+	{
+		$marca = array(
+			"nome" => $this->input->post("nome"),
+			"pais_origem" => $this->input->post("pais_origem")
+		);
+
+		$this->Marca_model->atualizar($id, $marca);
+
+		redirect('admin/marca');
+	}
 	// $this->Marca_model->inserir($marca);
 	// $this->Marca_model->atualizar($id, $marca);
 	// $this->session->set_flashdata('msg', 'Marca editada com sucesso');
