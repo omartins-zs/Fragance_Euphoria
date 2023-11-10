@@ -46,6 +46,23 @@ class Marca extends MY_Controller
 		redirect('admin/marca');
 	}
 
+
+	public function edit($id)
+	{
+		$dados['marca'] = $this->Marca_model->buscaMarcaPorId($id);
+
+		$dados['subview'] = 'admin/marca/insertEdit';
+
+		// echo "<pre>";
+		// print_r($dados);
+		// exit;
+
+
+		$this->load->vars($dados);
+
+		$this->load->view('admin/layout_main_admin');
+	}
+
 	// $this->Marca_model->inserir($marca);
 	// $this->Marca_model->atualizar($id, $marca);
 	// $this->session->set_flashdata('msg', 'Marca editada com sucesso');
