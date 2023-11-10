@@ -22,7 +22,18 @@ class Marca extends MY_Controller
 
 		$this->load->view('admin/layout_main_admin');
 	}
-	
+
+	public function novo()
+	{
+		// $dados["titulo"] = "Sistemas/Aplicativos";
+
+		$dados['subview'] = 'admin/marca/insertEdit';
+
+		$this->load->vars($dados);
+
+		$this->load->view('admin/layout_main_admin');
+	}
+
 	// $this->Marca_model->inserir($marca);
 	// $this->Marca_model->atualizar($id, $marca);
 	// $this->session->set_flashdata('msg', 'Marca editada com sucesso');
