@@ -11,4 +11,9 @@ class Cliente_model extends CI_Model
 
 		return $this->db->get()->result();
 	}
+	
+	public function inserir($cliente)
+	{
+		$this->db->insert("clientes", $cliente);
+	}
 }
