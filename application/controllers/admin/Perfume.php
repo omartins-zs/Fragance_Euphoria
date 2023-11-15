@@ -74,4 +74,45 @@ class Perfume extends MY_Controller
 
 		redirect('admin/perfume');
 	}
+
+
+	public function edit($id)
+	{
+		$dados['perfume'] = $this->Perfume_model->buscaperfumePorId($id);
+		$dados['marcas'] = $this->Marca_model->buscaMarcas();
+
+
+		$dados['subview'] = 'admin/perfume/insertEdit';
+
+		// echo "<pre>";
+		// print_r($dados);
+		// exit;
+
+
+		$this->load->vars($dados);
+
+		$this->load->view('admin/layout_main_admin');
+	}
+
+
+	public function update($id)
+	{
+		$perfume = array(
+			"descricao" => $this->input->post("descricao"),
+			"marca" => $this->input->post("marca"),
+			"tipo" => $this->input->post("tipo"),
+			"volume" => $this->input->post("volume"),
+			"preco" => $this->input->post("preco"),
+			"estoque" => $this->input->post("estoque")
+		);
+
+		$this->Perfume_model->atualizar($id, $perfume);
+
+		redirect('admin/perfume');
+	}
+
+	// $this->Perfume_model->inserir($perfume);
+	// $this->Perfume_model->atualizar($id, $perfume);
+	// $this->session->set_flashdata('msg', 'perfume editada com sucesso');
+	// $this->session->set_flashdata('msg', 'perfume cadastrada com sucesso');
 }
