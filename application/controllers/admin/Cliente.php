@@ -53,4 +53,29 @@ class Cliente extends MY_Controller
 
 		redirect('admin/cliente');
 	}
+
+	public function edit($id)
+	{
+		$dados['cliente'] = $this->cliente_model->buscaclientePorId($id);
+		$dados['marcas'] = $this->Cliente_model->buscaMarcas();
+
+
+		$dados['subview'] = 'admin/cliente/insertEdit';
+
+		// echo "<pre>";
+		// print_r($dados);
+		// exit;
+
+
+		$this->load->vars($dados);
+
+		$this->load->view('admin/layout_main_admin');
+	}
+
+
+	// $this->cliente_model->inserir($cliente);
+	// $this->cliente_model->atualizar($id, $cliente);
+	// $this->session->set_flashdata('msg', 'cliente editada com sucesso');
+	// $this->session->set_flashdata('msg', 'cliente cadastrada com sucesso');
+
 }
