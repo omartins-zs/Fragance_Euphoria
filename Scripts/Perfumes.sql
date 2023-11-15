@@ -8,5 +8,6 @@ CREATE TABLE `fragance_euphoria_bd`.`perfumes` (
 	`volume` INT NOT NULL,
 	`preco` DECIMAL(10, 2) NOT NULL,
 	`estoque` INT NOT NULL,
+	`imagem` blob NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
