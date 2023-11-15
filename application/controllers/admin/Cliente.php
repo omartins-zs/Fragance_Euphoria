@@ -36,4 +36,21 @@ class Cliente extends MY_Controller
 
 		$this->load->view('admin/layout_main_admin');
 	}
+
+	public function create()
+	{
+
+		$cliente = array(
+			"descricao" => $this->input->post("descricao"),
+			"marca" => $this->input->post("marca"),
+			"tipo" => $this->input->post("tipo"),
+			"volume" => $this->input->post("volume"),
+			"preco" => $this->input->post("preco"),
+			"estoque" => $this->input->post("estoque")
+		);
+
+		$this->cliente_model->inserir($cliente);
+
+		redirect('admin/cliente');
+	}
 }
