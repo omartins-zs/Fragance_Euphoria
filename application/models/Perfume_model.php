@@ -25,4 +25,10 @@ class Perfume_model extends CI_Model
 
 		return $this->db->get()->row();
 	}
+
+	public function atualizar($id, $marca)
+	{
+		$this->db->where("id", $id);
+		return $this->db->update("perfumes", $marca);
+	}
 }
