@@ -11,4 +11,9 @@ class Perfume_model extends CI_Model
 
 		return $this->db->get()->result();
 	}
+
+	public function inserir($marca)
+	{
+		$this->db->insert("perfumes", $marca);
+	}
 }
