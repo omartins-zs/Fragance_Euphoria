@@ -23,4 +23,17 @@ class Cliente extends MY_Controller
 
 		$this->load->view('admin/layout_main_admin');
 	}
+
+	public function novo()
+	{
+		$dados['subview'] = 'admin/cliente/insertEdit';
+
+		// echo "<pre>";
+		// print_r($dados);
+		// exit;
+
+		$this->load->vars($dados);
+
+		$this->load->view('admin/layout_main_admin');
+	}
 }
