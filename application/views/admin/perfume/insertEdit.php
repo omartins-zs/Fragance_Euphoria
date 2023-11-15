@@ -66,7 +66,7 @@
 					<?php if ($perfume->imagem == '') : ?>
 						<!-- Verifica se o campo de imagem está vazio -->
 						<!-- Se estiver vazio, exibe uma imagem padrão (default.jpg) -->
-						<img src="<?= base_url('assets/admin/images/default.jpg'); ?>" id="img_url" alt="Sua imagem" class="img-thumbnail">
+						<img src="<?= base_url('assets/admin/images/default_upload.jpg'); ?>" id="img_url" alt="Sua imagem" class="img-thumbnail">
 					<?php else : ?>
 						<!-- Se não estiver vazio (imagem já carregada), exibe a imagem correspondente -->
 						<img src="<?= base_url('assets/admin/upload/' . $perfume->imagem); ?>" id="img_url" alt="Sua imagem" class="img-thumbnail">
