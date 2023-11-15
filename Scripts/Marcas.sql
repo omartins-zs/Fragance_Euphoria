@@ -6,3 +6,6 @@ CREATE TABLE `fragance_euphoria_bd`.`marcas` (
 	`pais_origem` VARCHAR(60) NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
+
+
+INSERT INTO `marcas` (`id`, `nome`, `pais_origem`) VALUES (NULL, 'La Rive', 'Polônia'), (NULL, 'O Boticário', 'Brasil'), (NULL, 'Avon', 'Nova York - EUA');
