@@ -39,4 +39,39 @@ class Perfume extends MY_Controller
 
 		$this->load->view('admin/layout_main_admin');
 	}
+
+	public function create()
+	{
+		$config['upload_path']   = 'assets/admin/upload/'; // Configuração do diretório de upload
+		$config['allowed_types'] = 'jpg|png|jpeg'; // Tipos de arquivo permitidos
+		$config['overwrite']     = TRUE; // Substituir arquivo se já existir
+		$config['max_size']      = 1024; // Tamanho máximo do arquivo (em kilobytes)
+
+		$this->load->library('upload', $config); // Carrega a biblioteca de upload com as configurações
+
+		// Verifica se o upload foi bem-sucedido
+		if ($this->upload->do_upload('imagem')) {
+			$file_data = $this->upload->data();
+			$file_name = $file_data['file_name']; // Nome do arquivo após o upload
+		} else {
+			// Se o upload falhar, exibe mensagens de erro e redireciona
+			$this->session->set_flashdata('error_msg', $this->upload->display_errors());
+			redirect(current_url());
+		}
+
+		// Dados do perfume
+		$perfume = array(
+			"descricao" => $this->input->post("descricao"),
+			"marca" => $this->input->post("marca"),
+			"tipo" => $this->input->post("tipo"),
+			"volume" => $this->input->post("volume"),
+			"preco" => $this->input->post("preco"),
+			"estoque" => $this->input->post("estoque"),
+			"imagem" => $file_name // Nome do arquivo após o upload
+		);
+
+		$this->Perfume_model->inserir($perfume); // Insere o perfume no banco de dados
+
+		redirect('admin/perfume');
+	}
 }
