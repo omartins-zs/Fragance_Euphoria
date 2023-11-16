@@ -1,0 +1,48 @@
+/* .site-blocks-cover,
+.site-blocks-cover .row {
+	min-height: 600px;
+	height: calc(100vh - 174px);
+}
+
+.site-blocks-cover h1 {
+	font-size: 30px;
+	font-weight: 900;
+	color: #000;
+}
+
+@media (min-width: 768px) {
+	.site-blocks-cover h1 {
+		font-size: 50px;
+	}
+}
+
+.site-blocks-cover p {
+	color: #333333;
+	font-size: 20px;
+	background-size: auto;
+	line-height: 35px;
+}
+
+.site-blocks-cover .intro-text {
+	font-size: 16px;
+	line-height: 1.5;
+}
+ */
+
+/* Efeito Zoom Fade */
+.zoom-fade {
+	position: relative;
+	overflow: hidden;
+}
+
+.zoom-fade img {
+	width: 100%;
+	height: auto;
+	transition: transform 0.5s ease-in-out;
+}
+
+.zoom-fade:hover img {
+	transform: scale(1.1);
+	opacity: 0.6;
+
+}
