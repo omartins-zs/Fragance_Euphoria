@@ -11,34 +11,33 @@ Notas de Fragrância
 Volume
 Preço
 Estoque
-Tabela de Marcas:
 
+Tabela de Marcas:
 ID (Chave Primária)
 Nome
 País de Origem
-Ano de Fundação (Opcional, se relevante)
+
+
 Tabela de Categorias (Opcional, se você deseja categorizar os perfumes por tipo de fragrância, como floral, cítrica, etc.):
 
 ID (Chave Primária)
 Nome
-Tabela de Clientes:
 
+Tabela de Clientes:
 ID (Chave Primária)
 Nome
 E-mail
 Senha (Hashed para segurança)
 Endereço
-Telefone
-Outras informações relevantes sobre o cliente
-Tabela de Pedidos (Se você planeja ter um sistema de e-commerce):
+Celular
 
+Tabela de Pedidos (Se você planeja ter um sistema de e-commerce):
 ID (Chave Primária)
 ID do Cliente (Chave Estrangeira referenciando a tabela de Clientes)
 Data do Pedido
 Status do Pedido
-Outras informações relevantes sobre o pedido
-Tabela de Itens de Pedido (Para armazenar os itens específicos em cada pedido):
 
+Tabela de Itens de Pedido (Para armazenar os itens específicos em cada pedido):
 ID (Chave Primária)
 ID do Pedido (Chave Estrangeira referenciando a tabela de Pedidos)
 ID do Perfume (Chave Estrangeira referenciando a tabela de Perfumes)
