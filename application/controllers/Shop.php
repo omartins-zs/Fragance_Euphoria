@@ -20,6 +20,25 @@ class Shop extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->view('templates/shop/header');
+		$this->load->view('templates/shop/navbar');
 		$this->load->view('shop_ecommerce');
+		$this->load->view('templates/shop/footer');
+	}
+
+	public function promocoes()
+	{
+		$this->load->view('templates/shop/header');
+		$this->load->view('templates/shop/navbar');
+		$this->load->view('shop/promocoes');
+		$this->load->view('templates/shop/footer');
+	}
+
+	public function produtos()
+	{
+		$this->load->view('templates/shop/header');
+		$this->load->view('templates/shop/navbar');
+		$this->load->view('shop/produtos');
+		$this->load->view('templates/shop/footer');
 	}
 }
