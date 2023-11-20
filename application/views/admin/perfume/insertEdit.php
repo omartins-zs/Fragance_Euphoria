@@ -30,10 +30,10 @@
 					<div class="col">
 						<div class="form-group">
 							<label for="exampleFormControlSelect1">Tipo</label>
-							<select class="form-control" id="exampleFormControlSelect1" value="<?= $perfume->tipo; ?>" name="tipo">
-								<option>Masculino</option>
-								<option>Feminino</option>
-								<option>Unissex</option>
+							<select class="form-control" id="exampleFormControlSelect1" name="tipo">
+								<option value="Masculino" <?php if ($perfume->tipo == 'Masculino') echo "selected"; ?>>Masculino</option>
+								<option value="Feminino" <?php if ($perfume->tipo == 'Feminino') echo "selected"; ?>>Feminino</option>
+								<option value="Unissex" <?php if ($perfume->tipo == 'Unissex') echo "selected"; ?>>Unissex</option>
 							</select>
 						</div>
 					</div>
