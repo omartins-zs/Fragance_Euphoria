@@ -106,32 +106,33 @@ class Perfume extends MY_Controller
 
 	public function update($id)
 	{
-		$config = $this->configurarUpload(); // Configuração do upload
-
-		// Verifica se o upload foi bem-sucedido
-		if ($this->upload->do_upload('imagem')) {
-			$file_data = $this->upload->data();
-			$file_name = $file_data['file_name']; // Nome do arquivo após o upload
-		} else {
-			// Se o upload falhar, imprime mensagem de erro e termina o script
-			die('Não foi feito o upload: ' . $this->upload->display_errors());
-			// Se o upload falhar, exibe mensagens de erro e redireciona
-			$this->session->set_flashdata('error_msg', $this->upload->display_errors());
-			redirect(current_url());
-		}
-
-		// Dados do perfume
 		$perfume = array(
 			"descricao" => $this->input->post("descricao"),
 			"marca" => $this->input->post("marca"),
 			"tipo" => $this->input->post("tipo"),
 			"volume" => $this->input->post("volume"),
 			"preco" => $this->input->post("preco"),
-			"estoque" => $this->input->post("estoque"),
-			"imagem" => $file_name // Nome do arquivo após o upload
+			"estoque" => $this->input->post("estoque")
 		);
 
-		$this->Perfume_model->atualizar($id, $perfume); // Atualiza o perfume no banco de dados
+		// Verifica se o campo de imagem foi enviado
+		if (!empty($_FILES['imagem']['name'])) {
+			$config = $this->configurarUpload();
+			$this->load->library('upload', $config);
+
+			// Verifica se o upload foi bem-sucedido
+			if ($this->upload->do_upload('imagem')) {
+				$file_data = $this->upload->data();
+				$file_name = $file_data['file_name'];
+				$perfume['imagem'] = $file_name; // Atualiza o nome da imagem
+			} else {
+				// Se o upload falhar, imprime mensagem de erro e termina o script
+				$this->session->set_flashdata('error_msg', 'Erro ao fazer o upload da imagem: ' . $this->upload->display_errors());
+				redirect('admin/perfume/edit/' . $id);
+			}
+		}
+
+		$this->Perfume_model->atualizar($id, $perfume);
 
 		redirect('admin/perfume');
 	}
