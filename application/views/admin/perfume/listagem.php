@@ -17,7 +17,7 @@
   			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
   				<thead>
   					<tr>
-  						<th>Imagem</th>
+  						<th class="col-1">Imagem</th>
   						<th>Perfume</th>
   						<th>Marca</th>
   						<th>Tipo</th>
@@ -28,7 +28,7 @@
   					</tr>
   				</thead>
   				<tbody>
-  					<?php if (count($perfumes)) : foreach ($perfumes as $perfume) : ?>
+  					<?php if (count($perfumes)) : foreach ($perfumes['perfumes'] as $perfume) : ?>
   							<tr>
   								<td><img style="width: 4rem; height: 4rem;" src="<?= base_url('assets/admin/upload/' .  $perfume->imagem); ?>"></td>
   								<!-- <td><img class="rounded-circle" style="width: 4rem; height: 4rem;" src="<?= base_url('assets/admin/upload/' .  $perfume->imagem); ?>"></td> -->
