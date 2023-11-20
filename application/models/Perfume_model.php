@@ -8,8 +8,14 @@ class Perfume_model extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('perfumes');
+		$result['perfumes'] = $this->db->get()->result();
 
-		return $this->db->get()->result();
+		// Execute a segunda consulta para obter o total de perfumes
+		$this->db->select('COUNT(*) as TOTAL_PERFUMES');
+		$this->db->from('perfumes');
+		$result['total_perfumes'] = $this->db->get()->row()->TOTAL_PERFUMES;
+
+		return $result;
 	}
 
 	public function inserir($marca)
