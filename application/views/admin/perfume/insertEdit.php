@@ -2,7 +2,7 @@
 	<div class="card-header py-3"><?= empty($perfume->descricao) ? 'Novo perfume' : 'Editar perfume'; ?></div>
 	<div class="card-body">
 		<?php if (isset($perfume->id)) : ?>
-			<form class="form" action="<?= base_url() ?>admin/perfume/update/<?= $perfume->id ?>" method="post">
+			<form class="form" action="<?= base_url() ?>admin/perfume/update/<?= $perfume->id ?>" method="post" enctype="multipart/form-data">
 			<?php else : ?>
 				<form class="form" method="POST" enctype="multipart/form-data" action="<?= base_url() ?>admin/perfume/create">
 				<?php endif; ?>
