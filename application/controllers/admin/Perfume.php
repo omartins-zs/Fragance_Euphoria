@@ -13,6 +13,18 @@ class Perfume extends MY_Controller
 		// $this->session->userdata('loggedin') == TRUE || redirect('user/login');
 	}
 
+	private function configurarUpload()
+	{
+		$config['upload_path']   = 'assets/admin/upload/'; // Configuração do diretório de upload
+		$config['allowed_types'] = 'jpg|png|jpeg'; // Tipos de arquivo permitidos
+		$config['overwrite']     = TRUE; // Substituir arquivo se já existir
+		$config['max_size']      = 1024; // Tamanho máximo do arquivo (em kilobytes)
+
+		$this->load->library('upload', $config); // Carrega a biblioteca de upload com as configurações
+
+		return $config;
+	}
+
 	public function index()
 	{
 		$dados['perfumes'] = $this->Perfume_model->buscaperfumes();
@@ -42,12 +54,7 @@ class Perfume extends MY_Controller
 
 	public function create()
 	{
-		$config['upload_path']   = 'assets/admin/upload/'; // Configuração do diretório de upload
-		$config['allowed_types'] = 'jpg|png|jpeg'; // Tipos de arquivo permitidos
-		$config['overwrite']     = TRUE; // Substituir arquivo se já existir
-		$config['max_size']      = 1024; // Tamanho máximo do arquivo (em kilobytes)
-
-		$this->load->library('upload', $config); // Carrega a biblioteca de upload com as configurações
+		$config = $this->configurarUpload(); // Configuração do upload
 
 		// Verifica se o upload foi bem-sucedido
 		if ($this->upload->do_upload('imagem')) {
@@ -99,12 +106,7 @@ class Perfume extends MY_Controller
 
 	public function update($id)
 	{
-		$config['upload_path']   = 'assets/admin/upload/'; // Configuração do diretório de upload
-		$config['allowed_types'] = 'jpg|png|jpeg'; // Tipos de arquivo permitidos
-		$config['overwrite']     = TRUE; // Substituir arquivo se já existir
-		$config['max_size']      = 1024; // Tamanho máximo do arquivo (em kilobytes)
-
-		$this->load->library('upload', $config); // Carrega a biblioteca de upload com as configurações
+		$config = $this->configurarUpload(); // Configuração do upload
 
 		// Verifica se o upload foi bem-sucedido
 		if ($this->upload->do_upload('imagem')) {
