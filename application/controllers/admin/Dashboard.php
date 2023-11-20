@@ -13,6 +13,10 @@ class Dashboard extends MY_Controller
 	{
 		$dados['subview'] = 'admin/admin';
 
+		$dados['total_perfumes'] = $this->Dashboard_model->countPerfumes();
+		$dados['total_marcas'] = $this->Dashboard_model->countMarcas();
+		$dados['total_clientes'] = $this->Dashboard_model->countClientes();
+
 		$this->load->vars($dados);
 
 		$this->load->view('admin/layout_main_admin');
