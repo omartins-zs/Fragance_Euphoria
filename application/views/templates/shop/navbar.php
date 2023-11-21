@@ -20,8 +20,8 @@
 						Categorias
 					</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="<?= base_url() ?>Shop/produtos">Masculino</a></li>
-						<li><a class="dropdown-item" href="#">Feminino</a></li>
+						<li><a class="dropdown-item" href="<?= base_url() ?>Shop/produtos/Masculino">Masculino</a></li>
+						<li><a class="dropdown-item" href="<?= base_url() ?>Shop/produtos/Feminino">Feminino</a></li>
 						<li>
 							<hr class="dropdown-divider">
 						</li>
