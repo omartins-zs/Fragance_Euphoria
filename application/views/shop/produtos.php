@@ -5,7 +5,7 @@
 				<div class="col mb-5">
 					<div class="card h-100">
 						<!-- Product image-->
-						<img class="card-img-top" style="width: 243px; height:162px;object-fit: contain;" src="<?= !empty($perfume->imagem) ? base_url('assets/admin/upload/' . $perfume->imagem) : base_url('assets/img/perfume_default.png'); ?>" alt="<?= $perfume->descricao; ?>" />
+						<img class="card-img-top mt-2" style="width: 243px; height:162px;object-fit: contain;" src="<?= !empty($perfume->imagem) ? base_url('assets/admin/upload/' . $perfume->imagem) : base_url('assets/img/perfume_default.png'); ?>" alt="<?= $perfume->descricao; ?>" />
 						<!-- Product details-->
 						<div class="card-body p-2">
 							<div class="text-center">
