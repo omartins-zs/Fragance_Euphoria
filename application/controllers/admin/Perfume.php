@@ -18,7 +18,8 @@ class Perfume extends MY_Controller
 		$config['upload_path']   = 'assets/admin/upload/'; // Configuração do diretório de upload
 		$config['allowed_types'] = 'jpg|png|jpeg'; // Tipos de arquivo permitidos
 		$config['overwrite']     = TRUE; // Substituir arquivo se já existir
-		$config['max_size']      = 1024; // Tamanho máximo do arquivo (em kilobytes)
+		$config['max_size']      = 3072;  // Tamanho máximo do arquivo (em kilobytes)
+		$config['detect_mime']   = TRUE;
 
 		$this->load->library('upload', $config); // Carrega a biblioteca de upload com as configurações
 
@@ -60,12 +61,13 @@ class Perfume extends MY_Controller
 		if ($this->upload->do_upload('imagem')) {
 			$file_data = $this->upload->data();
 			$file_name = $file_data['file_name']; // Nome do arquivo após o upload
+			log_message('debug', 'Upload bem-sucedido: ' . $file_name);
 		} else {
 			// Se o upload falhar, exibe mensagens de erro e redireciona
 			$this->session->set_flashdata('error_msg', $this->upload->display_errors());
-			// Se o upload falhar, imprime mensagem de erro e termina o script
-			die('Não foi feito o upload: ' . $this->upload->display_errors());
-			redirect(current_url());
+			log_message('error', 'Erro ao fazer o upload da imagem: ' . $this->upload->display_errors());
+			// redirect(current_url());
+			redirect('admin/perfume/novo');
 		}
 
 		// Dados do perfume
@@ -80,6 +82,8 @@ class Perfume extends MY_Controller
 		);
 
 		$this->Perfume_model->inserir($perfume); // Insere o perfume no banco de dados
+		
+		$this->session->set_flashdata('success', 'Perfume editado com sucesso');
 
 		redirect('admin/perfume');
 	}
@@ -90,13 +94,7 @@ class Perfume extends MY_Controller
 		$dados['perfume'] = $this->Perfume_model->buscaperfumePorId($id);
 		$dados['marcas'] = $this->Marca_model->buscaMarcas();
 
-
 		$dados['subview'] = 'admin/perfume/insertEdit';
-
-		// echo "<pre>";
-		// print_r($dados);
-		// exit;
-
 
 		$this->load->vars($dados);
 
@@ -133,6 +131,7 @@ class Perfume extends MY_Controller
 		}
 
 		$this->Perfume_model->atualizar($id, $perfume);
+		$this->session->set_flashdata('success', 'Perfume editado com sucesso');
 
 		redirect('admin/perfume');
 	}
