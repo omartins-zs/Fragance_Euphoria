@@ -19,21 +19,21 @@
   					<tr>
   						<th class="col-1">Imagem</th>
   						<th>Perfume</th>
-  						<th>Marca</th>
+  						<th class="col-1">Marca</th>
   						<th>Tipo</th>
-  						<th>Volume</th>
-  						<th>Preço</th>
-  						<th>Estoque</th>
-  						<th>Ações</th>
+  						<th class="col-1">Volume</th>
+  						<th class="col-1">Preço</th>
+  						<th class="col-1">Estoque</th>
+  						<th class="col-1">Ações</th>
   					</tr>
   				</thead>
   				<tbody>
   					<?php if (count($perfumes)) : foreach ($perfumes['perfumes'] as $perfume) : ?>
   							<tr>
-  								<td><img style="width: 4rem; height: 4rem;" src="<?= base_url('assets/admin/upload/' .  $perfume->imagem); ?>"></td>
+  								<td><img style="width: 4rem; height: 4rem; object-fit: contain;" src="<?= base_url('assets/admin/upload/' .  $perfume->imagem); ?>"></td>
   								<!-- <td><img class="rounded-circle" style="width: 4rem; height: 4rem;" src="<?= base_url('assets/admin/upload/' .  $perfume->imagem); ?>"></td> -->
   								<td><?= $perfume->descricao ?></td>
-  								<td><?= $perfume->marca ?></td>
+  								<td><?= nome_marca($perfume->marca); ?></td>
   								<td><?= $perfume->tipo ?></td>
   								<td><?= $perfume->volume ?></td>
   								<td>R$ <?= $perfume->preco ?></td>
