@@ -12,6 +12,7 @@
 
 	<link href="<?= base_url() ?>assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
+	<link rel="stylesheet" href="<?= base_url() ?>assets/shop/css/style.css">
 
 </head>
 
