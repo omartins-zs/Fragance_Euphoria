@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="<?= base_url() ?>">Fragance Euphoria</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
 				</li> -->
 			</ul>
 			<form class="d-flex" role="search">
-				<button class="btn btn-outline-dark" type="submit">
+				<button class="btn btn-outline-light" type="submit">
 					<i class="fas fa-shopping-cart"></i>
 					Carrinho
 					<span class="badge bg-dark text-white ms-1 rounded-pill">0</span></button>
