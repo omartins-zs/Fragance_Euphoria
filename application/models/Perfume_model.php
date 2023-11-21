@@ -4,6 +4,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Perfume_model extends CI_Model
 {
+	public function buscaPerfumes()
+	{
+		$this->db->select('*');
+		$this->db->from('perfumes');
+		$result['perfumes'] = $this->db->get()->result();
+
+		// Execute a segunda consulta para obter o total de perfumes
+		$this->db->select('COUNT(*) as TOTAL_PERFUMES');
+		$this->db->from('perfumes');
+		$result['total_perfumes'] = $this->db->get()->row()->TOTAL_PERFUMES;
+
+		return $result;
+	}
+
 	public function buscaPerfumesPorTipo($tipo)
 	{
 		$this->db->select('*');
@@ -14,22 +28,8 @@ class Perfume_model extends CI_Model
 			$this->db->where('tipo', $tipo);
 		}
 
-		$result['perfumes'] = $this->db->get()->result();
-
-		// Execute a segunda consulta para obter o total de perfumes
-		$this->db->select('COUNT(*) as TOTAL_PERFUMES');
-		$this->db->from('perfumes');
-
-		// Adiciona a condição para contar por tipo
-		if ($tipo !== 'Todos') {
-			$this->db->where('tipo', $tipo);
-		}
-
-		$result['total_perfumes'] = $this->db->get()->row()->TOTAL_PERFUMES;
-
-		return $result;
+		return $this->db->get()->result();
 	}
-
 
 	public function inserir($marca)
 	{
