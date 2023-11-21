@@ -72,7 +72,8 @@ class Perfume extends MY_Controller
 
 		// Dados do perfume
 		$perfume = array(
-			"descricao" => $this->input->post("descricao"),
+			"nome" => $this->input->post("nome"),
+			"descricao_info" => $this->input->post("descricao_info"),
 			"marca" => $this->input->post("marca"),
 			"tipo" => $this->input->post("tipo"),
 			"volume" => $this->input->post("volume"),
@@ -105,7 +106,8 @@ class Perfume extends MY_Controller
 	public function update($id)
 	{
 		$perfume = array(
-			"descricao" => $this->input->post("descricao"),
+			"nome" => $this->input->post("nome"),
+			"descricao_info" => $this->input->post("descricao_info"),
 			"marca" => $this->input->post("marca"),
 			"tipo" => $this->input->post("tipo"),
 			"volume" => $this->input->post("volume"),

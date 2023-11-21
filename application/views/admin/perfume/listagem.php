@@ -32,7 +32,7 @@
   							<tr>
   								<td><img style="width: 4rem; height: 4rem; object-fit: contain;" src="<?= base_url('assets/admin/upload/' .  $perfume->imagem); ?>"></td>
   								<!-- <td><img class="rounded-circle" style="width: 4rem; height: 4rem;" src="<?= base_url('assets/admin/upload/' .  $perfume->imagem); ?>"></td> -->
-  								<td><?= $perfume->descricao ?></td>
+  								<td><?= $perfume->nome ?></td>
   								<td><?= nome_marca($perfume->marca); ?></td>
   								<td><?= $perfume->tipo ?></td>
   								<td><?= $perfume->volume ?></td>

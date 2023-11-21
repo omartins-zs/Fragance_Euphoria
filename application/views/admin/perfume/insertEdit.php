@@ -1,5 +1,5 @@
 <div class="card shadow mb-4">
-	<div class="card-header py-3"><?= empty($perfume->descricao) ? 'Novo perfume' : 'Editar perfume'; ?></div>
+	<div class="card-header py-3"><?= empty($perfume->nome) ? 'Novo perfume' : 'Editar perfume'; ?></div>
 	<div class="card-body">
 		<?php if (isset($perfume->id)) : ?>
 			<form class="form" action="<?= base_url() ?>admin/perfume/update/<?= $perfume->id ?>" method="post" enctype="multipart/form-data">
@@ -9,8 +9,14 @@
 				<div class="row">
 					<div class="col">
 						<div class="form-group">
-							<label for="inputUsername">Nome da Perfume</label>
-							<input class="form-control" type="text" value="<?= $perfume->descricao; ?>" name="descricao">
+							<label for="inputUsername">Nome do Perfume</label>
+							<input class="form-control" type="text" value="<?= $perfume->nome; ?>" name="nome">
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-group">
+							<label for="inputUsername">Informações</label>
+							<input class="form-control" type="text" value="<?= $perfume->descricao_info; ?>" name="descricao_info">
 						</div>
 					</div>
 					<div class="col">
