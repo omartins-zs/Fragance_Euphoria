@@ -51,6 +51,12 @@
 							<?= $this->session->flashdata('error_msg'); ?>
 						</div>
 					<?php endif; ?>
+					
+					<?php if ($this->session->flashdata('success')) : ?>
+						<div class="alert alert-success">
+							<?= $this->session->flashdata('success'); ?>
+						</div>
+					<?php endif; ?>
 
 					<?php $this->load->view($subview); ?>
 
