@@ -18,6 +18,19 @@ class Perfume_model extends CI_Model
 		return $result;
 	}
 
+	public function buscaPerfumesPorTipo($tipo)
+	{
+		$this->db->select('*');
+		$this->db->from('perfumes');
+
+		// Adiciona a condição para buscar por tipo
+		if ($tipo !== 'Todos') {
+			$this->db->where('tipo', $tipo);
+		}
+
+		return $this->db->get()->result();
+	}
+
 	public function inserir($marca)
 	{
 		$this->db->insert("perfumes", $marca);
