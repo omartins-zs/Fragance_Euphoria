@@ -46,6 +46,12 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
+					<?php if ($this->session->flashdata('error_msg')) : ?>
+						<div class="alert alert-danger">
+							<?= $this->session->flashdata('error_msg'); ?>
+						</div>
+					<?php endif; ?>
+
 					<?php $this->load->view($subview); ?>
 
 				</div>
