@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Shop extends CI_Controller {
+class Shop extends MY_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -34,8 +35,23 @@ class Shop extends CI_Controller {
 		$this->load->view('templates/shop/footer');
 	}
 
-	public function produtos()
+	public function produtos($tipo = null)
 	{
+		// echo "<pre>";
+		// print_r($tipo);
+		// exit;
+		$dados['perfumes'] = $this->Perfume_model->buscaPerfumesPorTipo($tipo);
+
+		// if ($tipo !== null) {
+		// 	echo "<pre>";
+		// 	print_r($dados);
+		// 	echo "</pre>";
+		// }
+		// echo "<pre>";
+		// print_r($dados);
+		// exit;
+		$this->load->vars($dados);
+
 		$this->load->view('templates/shop/header');
 		$this->load->view('templates/shop/navbar');
 		$this->load->view('shop/produtos');
