@@ -11,5 +11,6 @@ class MY_Controller extends CI_Controller
         $this->load->model("Cliente_model");
         $this->load->model("Marca_model");
         $this->load->model("Dashboard_model");
+        $this->load->helper("Perfume_helper");
     }
 }
