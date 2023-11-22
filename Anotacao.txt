@@ -1,13 +1,13 @@
 Fragance Euphoria
 
 
-Codeigniter 
+Codeigniter
 
 
 Bootstrap
 
 
-jQuery 
+jQuery
 
 
 Ajax
@@ -39,3 +39,66 @@ Avaliações e Comentários: Permita que os clientes avaliem e comentem sobre os
 Relatórios e Estatísticas: Implemente um sistema para gerar relatórios sobre vendas, inventário e outros indicadores-chave de desempenho.
 
 Lembre-se de sempre considerar a experiência do usuário e a segurança dos dados ao desenvolver o sistema. Além disso, dependendo do escopo do projeto, pode ser útil contar com uma equipe de desenvolvedores, designers e testadores para garantir que o sistema funcione de maneira eficiente e sem problemas.
+
+
+
+Rotas de Carrinho
+
+// application/config/routes.php
+$route['carrinho'] = 'carrinho';
+$route['carrinho/adicionar'] = 'carrinho/adicionar';
+$route['carrinho/remover/(:any)'] = 'carrinho/remover/$1';
+$route['carrinho/limpar'] = 'carrinho/limpar';
+
+Adicionando no Carrinho com Ajax
+
+<!-- Adicione o Alertify.js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/themes/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js"></script>
+
+
+Button para Adicionar
+
+<div class="d-flex">
+    <input class="form-control text-center me-3" id="inputQuantity" type="" value="1" style="max-width: 3rem" />
+    <button class="btn btn-outline-dark flex-shrink-0" type="button" id="btnAdicionarCarrinho">
+        <i class="fas fa-shopping-cart"></i>
+        Adicionar no carrinho
+    </button>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#btnAdicionarCarrinho').on('click', function() {
+            var produtoId = <?= $perfume->id; ?>;
+            var produtoNome = '<?= $perfume->nome; ?>';
+            var produtoPreco = '<?= $perfume->preco; ?>';
+            var quantidade = $('#inputQuantity').val();
+
+            $.ajax({
+                type: 'POST',
+                url: '<?= base_url('carrinho/adicionar'); ?>',
+                data: {
+                    id: produtoId,
+                    nome: produtoNome,
+                    preco: produtoPreco,
+                    quantidade: quantidade
+                },
+                success: function(response) {
+                    // Exibir alerta do Alertify se a adição ao carrinho for bem-sucedida
+                    alertify.set('notifier', 'position', 'top-center');
+                    alertify.success('Produto adicionado ao carrinho com sucesso!');
+
+                    // Redirecionar para a página do carrinho ou faça algo com a resposta
+                    window.location.href = '<?= base_url('carrinho'); ?>';
+                },
+                error: function() {
+                    // Exibir alerta do Alertify em caso de erro
+                    alertify.set('notifier', 'position', 'top-center');
+                    alertify.error('Erro ao adicionar ao carrinho');
+                }
+            });
+        });
+    });
+</script>
