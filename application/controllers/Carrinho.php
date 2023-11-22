@@ -32,4 +32,22 @@ class Carrinho extends MY_Controller
 		$this->cart->insert($data);
 		redirect('carrinho');
 	}
+	public function remover($rowid)
+	{
+		// Remove um item do carrinho
+		$data = array(
+			'rowid' => $rowid,
+			'qtde'   => 0
+		);
+
+		$this->cart->update($data);
+		redirect('carrinho');
+	}
+	
+	public function limpar()
+	{
+		// Limpa o carrinho
+		$this->cart->destroy();
+		redirect('carrinho');
+	}
 }
