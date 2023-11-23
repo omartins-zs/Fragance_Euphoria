@@ -57,4 +57,18 @@ class Shop extends MY_Controller
 		$this->load->view('shop/produtos');
 		$this->load->view('templates/shop/footer');
 	}
+
+	public function detalhes($id)
+	{
+		$dados['perfume'] = $this->Perfume_model->buscaperfumePorId($id);
+		$dados['marcas'] = $this->Marca_model->buscaMarcas();
+
+		$this->load->vars($dados);
+
+		$this->load->view('templates/shop/header');
+		$this->load->view('templates/shop/navbar');
+		$this->load->view('shop/detalhes');
+		$this->load->view('templates/shop/footer');
+	}
+
 }
