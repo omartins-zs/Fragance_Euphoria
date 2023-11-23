@@ -14,7 +14,7 @@
 				<p class="lead text-justify"><?= $perfume->descricao_info; ?></p>
 				<div class="d-flex">
 					<!-- Formulário para adicionar ao carrinho -->
-					<form action="<?= base_url('Carrinho/adicionar'); ?>" method="post">
+					<form action="<?= base_url(); ?>carrinho/adicionar" method="post">
 						<input type="hidden" name="id" value="<?= $perfume->id; ?>">
 						<input type="hidden" name="nome" value="<?= $perfume->nome; ?>">
 						<input type="hidden" name="preco" value="<?= $perfume->preco; ?>">
@@ -28,3 +28,9 @@
 		</div>
 	</div>
 </section>
+
+<?php $this->load->view('templates/shop/footer'); ?>
+
+<?php $this->load->view('templates/shop/js'); ?>
+
+<?php $this->load->view('js/carrinho'); ?>

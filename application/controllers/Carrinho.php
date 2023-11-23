@@ -1,5 +1,4 @@
-<!-- // application/controllers/Carrinho.php -->
-<?
+<?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Carrinho extends MY_Controller
@@ -10,28 +9,52 @@ class Carrinho extends MY_Controller
 		parent::__construct();
 		$this->load->library('cart');
 	}
+
 	public function index()
 	{
 		$this->load->view('templates/shop/header');
 		$this->load->view('templates/shop/navbar');
-		// Exibe a página do carrinho
-		$this->load->view('shop/carrinho');
-		$this->load->view('templates/shop/footer');
+
+		if ($this->cart->total_items() > 0) {
+			// O carrinho não está vazio, exibe a página do carrinho
+			$this->load->view('shop/carrinho');
+		} else {
+			// O carrinho está vazio
+			echo "O carrrrinho esta vaziooooo";
+			// $this->load->view('shop/carrinho_vazio');
+		}
 	}
+
+
 
 	public function adicionar()
 	{
 		// Adiciona um item ao carrinho
-		$data = array(
+		$perfume = array(
 			'id'      => $this->input->post('id'),
-			'qtde'     => $this->input->post('quantidade'),
+			'qtde'    => $this->input->post('quantidade'),
 			'preco'   => $this->input->post('preco'),
 			'nome'    => $this->input->post('nome'),
 		);
 
-		$this->cart->insert($data);
-		redirect('carrinho');
+		// echo "<pre>";
+		// var_dump($perfume);
+		// print_r($perfume);
+		// exit;
+
+		if ($this->cart->insert($perfume)) {
+			// Se a inserção for bem-sucedida, redirecione para a página do carrinho
+			redirect('carrinho');
+		} else {
+			// // Se houver um problema ao inserir, exiba mensagens de erro
+			// echo "Erro ao adicionar ao carrinho.";
+			// // Adicione mensagens de erro específicas, se disponíveis
+			// print_r($this->cart->display_errors());
+			// exit;
+		}
 	}
+
+
 	public function remover($rowid)
 	{
 		// Remove um item do carrinho
@@ -43,7 +66,7 @@ class Carrinho extends MY_Controller
 		$this->cart->update($data);
 		redirect('carrinho');
 	}
-	
+
 	public function limpar()
 	{
 		// Limpa o carrinho
