@@ -3,22 +3,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Shop extends MY_Controller
 {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/userguide3/general/urls.html
-	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$dados['produtosNoCarrinho'] = $this->Carrinho_model->contarProdutosNoCarrinho($_SESSION['carrinho']);
+		$this->load->vars($dados);
+	}
+	
 	public function index()
 	{
 		$this->load->view('templates/shop/header');
@@ -32,6 +23,14 @@ class Shop extends MY_Controller
 		$this->load->view('templates/shop/header');
 		$this->load->view('templates/shop/navbar');
 		$this->load->view('shop/promocoes');
+		$this->load->view('templates/shop/footer');
+	}
+
+	public function blog()
+	{
+		$this->load->view('templates/shop/header');
+		$this->load->view('templates/shop/navbar');
+		$this->load->view('shop/blog');
 		$this->load->view('templates/shop/footer');
 	}
 
