@@ -57,16 +57,14 @@ class Carrinho extends MY_Controller
 		redirect('Carrinho');
 	}
 
-
-	public function remover($rowid)
+	public function remover($index)
 	{
-		// Remove um item do carrinho
-		$data = array(
-			'rowid' => $rowid,
-			'qtde'   => 0
-		);
+		// Remove um item do carrinho na sessão
+		if (isset($_SESSION['carrinho'][$index])) {
+			unset($_SESSION['carrinho'][$index]);
+		}
 
-		$this->cart->update($data);
+		// Redireciona para a página do carrinho
 		redirect('carrinho');
 	}
 
