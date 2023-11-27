@@ -66,3 +66,23 @@
 		</div>
 	</div>
 </div>
+
+<?php $this->load->view('templates/shop/js'); ?>
+
+<script>
+	$(document).ready(function() {
+		// Atualiza o total do carrinho quando a opção de frete é alterada
+		$('#freteSelect').change(function() {
+			updateTotal();
+		});
+
+		// Função para atualizar o total com base na opção de frete selecionada
+		function updateTotal() {
+			var freteSelecionado = $('#freteSelect option:selected').data('frete') || 0;
+			var totalCarrinho = <?= $totalCarrinho ?>; // Pode ser substituído pela variável PHP
+
+			var novoTotal = parseFloat(totalCarrinho) + parseFloat(freteSelecionado);
+			$('#totalCarrinho').text('R$ ' + novoTotal.toFixed(2));
+		}
+	});
+</script>
