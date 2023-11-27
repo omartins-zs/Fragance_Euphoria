@@ -33,6 +33,35 @@
 						<a href="<?= base_url('carrinho/limpar'); ?>" class="btn btn-warning btn-sm btn-block">Limpar Carrinho</a>
 					</div>
 				</div>
+				<div class="col-md-4 summary bg-light">
+					<div>
+						<h4><b>Resumo</b></h4>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col">ITENS <?= $produtosNoCarrinho ?></div>
+						<div class="col text-right">R$ <?= $totalCarrinho ?></div>
+					</div>
+					<form>
+						<div class="mb-3">
+							<label for="" class="form-label">Frete</label>
+							<select class="form-control" id="freteSelect">
+								<option class="text-muted" selected disabled>Selecione</option>
+								<option class="text-muted" data-frete="15.00">Transportadora - R$ 15.00</option>
+								<option class="text-muted" data-frete="9.99">Correios - R$ 9.99</option>
+							</select>
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="">Cupom de desconto</label>
+							<input class="form-control" placeholder="Digite o cupom de desconto">
+						</div>
+					</form>
+					<div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+						<div class="col">Preço Total</div>
+						<div class="col text-right" id="totalCarrinho"><?= $totalCarrinho ?></div>
+					</div>
+					<button class="btn btn-dark btn-block">CHECKOUT</button>
+				</div>
 			</div>
 		</div>
 	</div>
