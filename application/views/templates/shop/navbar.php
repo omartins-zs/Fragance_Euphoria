@@ -12,6 +12,9 @@
 				<li class="nav-item">
 					<a class="nav-link" href="<?= base_url() ?>Shop/promocoes">Promoções</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="<?= base_url() ?>Shop/blog">Blog</a>
+				</li>
 				<!-- <li class="nav-item">
 					<a class="nav-link" href="#">Link</a>
 				</li> -->
