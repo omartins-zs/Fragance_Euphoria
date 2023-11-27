@@ -17,6 +17,7 @@ class Carrinho extends MY_Controller
 	{
 		$dados['produtosNoCarrinho'] = $this->Carrinho_model->contarProdutosNoCarrinho();
 		$dados['totalCarrinho'] = $this->Carrinho_model->calcularTotalCarrinho();
+		$dados['perfumesDoCarrinho'] =  $_SESSION['carrinho'];
 
 		// 	echo "<pre>";
 		// print_r( $_SESSION['carrinho']);
