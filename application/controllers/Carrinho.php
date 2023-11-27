@@ -33,8 +33,6 @@ class Carrinho extends MY_Controller
 		$this->load->view('templates/shop/footer');
 	}
 
-
-
 	public function adicionar()
 	{
 		// Adiciona um item ao carrinho
@@ -43,23 +41,20 @@ class Carrinho extends MY_Controller
 			'qtde'    => $this->input->post('quantidade'),
 			'preco'   => $this->input->post('preco'),
 			'nome'    => $this->input->post('nome'),
+			'imagem'    => $this->input->post('imagem'),
 		);
 
-		// echo "<pre>";
-		// var_dump($perfume);
-		// print_r($perfume);
-		// exit;
-
-		if ($this->cart->insert($perfume)) {
-			// Se a inserção for bem-sucedida, redirecione para a página do carrinho
-			redirect('carrinho');
-		} else {
-			// // Se houver um problema ao inserir, exiba mensagens de erro
-			// echo "Erro ao adicionar ao carrinho.";
-			// // Adicione mensagens de erro específicas, se disponíveis
-			// print_r($this->cart->display_errors());
-			// exit;
+		// Verifica se o carrinho existe na sessão
+		if (!isset($_SESSION['carrinho'])) {
+			// Se não existir, cria um array vazio
+			$_SESSION['carrinho'] = array();
 		}
+
+		// Adiciona o item ao carrinho na sessão
+		$_SESSION['carrinho'][] = $perfume;
+
+		// Redireciona para a página do carrinho
+		redirect('Carrinho');
 	}
 
 
