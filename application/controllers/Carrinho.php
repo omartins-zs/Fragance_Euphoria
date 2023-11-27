@@ -70,8 +70,10 @@ class Carrinho extends MY_Controller
 
 	public function limpar()
 	{
-		// Limpa o carrinho
-		$this->cart->destroy();
+		// Limpa o carrinho na sessão
+		unset($_SESSION['carrinho']);
+
+		// Redireciona para a página do carrinho
 		redirect('carrinho');
 	}
 }
