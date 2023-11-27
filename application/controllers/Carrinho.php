@@ -35,14 +35,11 @@ class Carrinho extends MY_Controller
 
 	public function adicionar()
 	{
-		// Adiciona um item ao carrinho
-		$perfume = array(
-			'id'      => $this->input->post('id'),
-			'qtde'    => $this->input->post('quantidade'),
-			'preco'   => $this->input->post('preco'),
-			'nome'    => $this->input->post('nome'),
-			'imagem'    => $this->input->post('imagem'),
-		);
+		$id = $this->input->post('id');
+		$quantidade = $this->input->post('quantidade');
+		$preco = $this->input->post('preco');
+		$nome = $this->input->post('nome');
+		$imagem = $this->input->post('imagem');
 
 		// Verifica se o carrinho existe na sessão
 		if (!isset($_SESSION['carrinho'])) {
@@ -50,8 +47,29 @@ class Carrinho extends MY_Controller
 			$_SESSION['carrinho'] = array();
 		}
 
-		// Adiciona o item ao carrinho na sessão
-		$_SESSION['carrinho'][] = $perfume;
+		// Verifica se o produto já está no carrinho
+		$produto_no_carrinho = false;
+		foreach ($_SESSION['carrinho'] as &$item) {
+			if ($item['id'] == $id) {
+				// Se o produto já estiver no carrinho, aumenta a quantidade
+				$item['qtde'] += $quantidade;
+				$produto_no_carrinho = true;
+				break;
+			}
+		}
+
+		// Se o produto não estiver no carrinho, adiciona como um novo item
+		if (!$produto_no_carrinho) {
+			$perfume = array(
+				'id'      => $id,
+				'qtde'    => $quantidade,
+				'preco'   => $preco,
+				'nome'    => $nome,
+				'imagem'  => $imagem,
+			);
+
+			$_SESSION['carrinho'][] = $perfume;
+		}
 
 		// Redireciona para a página do carrinho
 		redirect('Carrinho');
