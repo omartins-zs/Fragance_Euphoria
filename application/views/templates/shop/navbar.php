@@ -36,6 +36,10 @@
 				</li> -->
 			</ul>
 			<form class="d-flex" role="search">
+				<a href="<?= base_url() ?>admin/" class="btn btn-light mx-2">
+					<i class="fas fa-tachometer-alt"></i>
+					Acessar Administrativo
+				</a>
 				<a href="<?= base_url() ?>Carrinho/" class="btn btn-outline-light">
 					<i class="fas fa-shopping-cart"></i>
 					Carrinho
