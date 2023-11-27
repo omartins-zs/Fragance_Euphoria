@@ -43,7 +43,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
-				<a class="block-2-item" href="#">
+				<a class="block-2-item" href="<?= base_url() ?>Shop/produtos/Feminino">
 					<figure class="image zoom-fade">
 						<img src="<?= base_url() ?>assets/shop/img/modelo_mulher.jpg" alt="" class="img-fluid">
 					</figure>
@@ -66,7 +66,7 @@
 				</a>
 			</div>
 			<div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0">
-				<a class="block-2-item" href="#">
+				<a class="block-2-item" href="<?= base_url() ?>Shop/produtos/Masculino">
 					<figure class="image zoom-fade">
 						<img src="<?= base_url() ?>assets/shop/img/modelo_homem.jpg" alt="" class="img-fluid">
 					</figure>
@@ -78,4 +78,7 @@
 			</div>
 		</div>
 	</div>
+
+	<?php $this->load->view('shop/produtos_promocoes'); ?>
+
 </section>
