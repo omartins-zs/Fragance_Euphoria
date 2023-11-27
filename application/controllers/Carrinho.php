@@ -15,17 +15,21 @@ class Carrinho extends MY_Controller
 
 	public function index()
 	{
+		$dados['produtosNoCarrinho'] = $this->Carrinho_model->contarProdutosNoCarrinho();
+		$dados['totalCarrinho'] = $this->Carrinho_model->calcularTotalCarrinho();
+
+		// 	echo "<pre>";
+		// print_r( $_SESSION['carrinho']);
+		// print_r($perfume);
+		// var_dump($perfume);
+		// 	exit;
+
+		$this->load->vars($dados);
+
 		$this->load->view('templates/shop/header');
 		$this->load->view('templates/shop/navbar');
-
-		if ($this->cart->total_items() > 0) {
-			// O carrinho não está vazio, exibe a página do carrinho
-			$this->load->view('shop/carrinho');
-		} else {
-			// O carrinho está vazio
-			echo "O carrrrinho esta vaziooooo";
-			// $this->load->view('shop/carrinho_vazio');
-		}
+		$this->load->view('shop/carrinho');
+		$this->load->view('templates/shop/footer');
 	}
 
 
