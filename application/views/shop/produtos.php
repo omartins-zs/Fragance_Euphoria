@@ -19,8 +19,8 @@
 						<!-- Product actions-->
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent mx-auto">
 							<div class="btn-group">
-								<a type="button" class="btn btn-outline-secondary" href="<?= base_url() ?>Shop/detalhes/<?= $perfume->id; ?>">View</a>
-								<button type="button" class="btn btn-outline-secondary">Edit</button>
+								<a type="button" class="btn btn-primary" href="<?= base_url() ?>Shop/detalhes/<?= $perfume->id; ?>">Ver detalhes</a>
+								<!-- <button type="button" class="btn btn-outline-secondary">Edit</button> -->
 							</div>
 						</div>
 					</div>
