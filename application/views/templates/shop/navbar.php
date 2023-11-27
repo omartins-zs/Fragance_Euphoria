@@ -36,10 +36,11 @@
 				</li> -->
 			</ul>
 			<form class="d-flex" role="search">
-				<button class="btn btn-outline-light" type="submit">
+				<a href="<?= base_url() ?>Carrinho/" class="btn btn-outline-light">
 					<i class="fas fa-shopping-cart"></i>
 					Carrinho
-					<span class="badge bg-dark text-white ms-1 rounded-pill">0</span></button>
+					<span class="badge bg-info text-white ms-1 rounded-pill"><?= $produtosNoCarrinho ?></span>
+				</a>
 			</form>
 		</div>
 	</div>
