@@ -7,7 +7,10 @@ class Carrinho extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->library('cart');
+		// Inicia a sessão, se já não estiver iniciada
+		if (session_status() == PHP_SESSION_NONE) {
+			session_start();
+		}
 	}
 
 	public function index()
