@@ -30,7 +30,7 @@
   				<tbody>
   					<?php if (count($perfumes)) : foreach ($perfumes['perfumes'] as $perfume) : ?>
   							<tr>
-  								<td><img style="width: 4rem; height: 4rem; object-fit: contain;" src="<?= base_url('assets/admin/upload/' .  $perfume->imagem); ?>"></td>
+  								<td><img style="width: 4rem; height: 4rem; object-fit: contain;" src="<?= !empty($perfume->imagem) ? base_url('assets/admin/upload/' . $perfume->imagem) : base_url('assets/img/perfume_default.png'); ?>" alt="<?= $perfume->descricao; ?>"></td>
   								<!-- <td><img class="rounded-circle" style="width: 4rem; height: 4rem;" src="<?= base_url('assets/admin/upload/' .  $perfume->imagem); ?>"></td> -->
   								<td><?= $perfume->nome ?></td>
   								<td><?= nome_marca($perfume->marca); ?></td>
