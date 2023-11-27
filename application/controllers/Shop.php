@@ -7,9 +7,11 @@ class Shop extends MY_Controller
 	{
 		parent::__construct();
 		$dados['produtosNoCarrinho'] = $this->Carrinho_model->contarProdutosNoCarrinho($_SESSION['carrinho']);
+		$dados['perfumesAleatorios'] = $this->Perfume_model->buscaPerfumesAleatorios(4);
+
 		$this->load->vars($dados);
 	}
-	
+
 	public function index()
 	{
 		$this->load->view('templates/shop/header');
@@ -20,6 +22,10 @@ class Shop extends MY_Controller
 
 	public function promocoes()
 	{
+		// echo "<pre>";
+		// 	print_r($dados);
+		// 	exit;
+
 		$this->load->view('templates/shop/header');
 		$this->load->view('templates/shop/navbar');
 		$this->load->view('shop/promocoes');
@@ -69,5 +75,4 @@ class Shop extends MY_Controller
 		$this->load->view('shop/detalhes');
 		$this->load->view('templates/shop/footer');
 	}
-
 }
