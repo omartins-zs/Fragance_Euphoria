@@ -22,4 +22,19 @@ class Carrinho_model extends CI_Model
 			return 0;
 		}
 	}
+
+	public function calcularTotalCarrinho()
+	{
+		if (isset($_SESSION['carrinho'])) {
+			$total = 0;
+
+			foreach ($_SESSION['carrinho'] as $item) {
+				$total += $item['preco'] * $item['qtde'];
+			}
+
+			return $total;
+		} else {
+			return 0;
+		}
+	}
 }
