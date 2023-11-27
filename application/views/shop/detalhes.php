@@ -14,13 +14,18 @@
 				<p class="lead text-justify"><?= $perfume->descricao_info; ?></p>
 				<div class="d-flex">
 					<!-- Formulário para adicionar ao carrinho -->
-					<form action="<?= base_url(); ?>carrinho/adicionar" method="post">
+					<form action="<?= base_url(); ?>carrinho/adicionar" method="post" class="d-flex flex-column align-items-start">
 						<input type="hidden" name="id" value="<?= $perfume->id; ?>">
 						<input type="hidden" name="nome" value="<?= $perfume->nome; ?>">
 						<input type="hidden" name="preco" value="<?= $perfume->preco; ?>">
-						<label for="quantidade">Quantidade:</label>
-						<input class="form-control text-center me-3" id="quantidade" name="quantidade" type="text" value="1" style="max-width: 3rem" />
-						<input type="submit" class="btn btn-outline-dark flex-shrink-0" value="Adicionar no carrinho">
+						<input type="hidden" name="imagem" value="<?= $perfume->imagem; ?>">
+						<div class="mb-3 d-flex align-items-center">
+							<label for="quantidade" class="me-2">Quantidade</label>
+							<input class="form-control text-center me-2" id="quantidade" name="quantidade" type="text" value="1" style="max-width: 3rem" />
+							<button type="submit" class="btn btn-outline-dark">
+								<i class="fas fa-shopping-cart me-2"></i>Adicionar no carrinho
+							</button>
+						</div>
 					</form>
 					<!-- Fim do formulário -->
 				</div>
@@ -28,9 +33,3 @@
 		</div>
 	</div>
 </section>
-
-<?php $this->load->view('templates/shop/footer'); ?>
-
-<?php $this->load->view('templates/shop/js'); ?>
-
-<?php $this->load->view('js/carrinho'); ?>
