@@ -13,7 +13,8 @@
 							<div class="col text-right text-muted"><?= $produtosNoCarrinho ?> items</div>
 						</div>
 					</div>
-					<div class="row border-top border-bottom">
+					<hr>
+					<div class="row">
 						<?php foreach ($perfumesDoCarrinho as $index => $perfume) : ?>
 							<div class="row main align-items-center my-1">
 								<div class="col-2"><img class="img-fluid" src="<?= !empty($perfume['imagem']) ? base_url('assets/admin/upload/' . $perfume['imagem']) : base_url('assets/img/perfume_default.png'); ?>"></div>
@@ -28,13 +29,16 @@
 							</div>
 						<?php endforeach; ?>
 					</div>
+					<br>
+					<hr>
 					<div class="d-flex justify-content-between my-3">
 						<div class="back-to-shop"><a class="text-decoration-none" href="<?= base_url('shop'); ?>"><i class="fas fa-arrow-left"></i><span class="text-muted">Voltar para as compras</span></a></div>
 						<a href="<?= base_url('carrinho/limpar'); ?>" class="btn btn-warning btn-sm btn-block">Limpar Carrinho</a>
 					</div>
 				</div>
-				<div class="col-md-4 summary bg-light">
-					<div>
+
+				<div class="col-md-4 bg-light">
+					<div class="d-flex justify-content-between">
 						<h4><b>Resumo</b></h4>
 					</div>
 					<hr>
