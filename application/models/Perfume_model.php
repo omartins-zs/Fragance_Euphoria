@@ -31,6 +31,17 @@ class Perfume_model extends CI_Model
 		return $this->db->get()->result();
 	}
 
+	public function buscaPerfumesAleatorios($quantidade)
+	{
+		// Seleciona perfumes aleatórios limitados pela quantidade desejada
+		$this->db->select('*');
+		$this->db->from('perfumes');
+		$this->db->order_by('RAND()');
+		$this->db->limit($quantidade);
+
+		return $this->db->get()->result();
+	}
+
 	public function inserir($marca)
 	{
 		$this->db->insert("perfumes", $marca);
