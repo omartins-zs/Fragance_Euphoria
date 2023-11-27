@@ -6,11 +6,13 @@
 			<div class="row">
 				<div class="col-md-8">
 					<div class="d-flex justify-content-between">
-						<div class="row w-100">
-							<div class="col">
+						<div class="row w-100 align-items-center">
+							<div class="col-10">
 								<h4><b>Carrinho de Compras</b></h4>
 							</div>
-							<div class="col text-right text-muted"><?= $produtosNoCarrinho ?> items</div>
+							<div class="col text-muted">
+								<p class="m-0"><?= $produtosNoCarrinho ?> items</p>
+							</div>
 						</div>
 					</div>
 					<hr>
@@ -25,7 +27,7 @@
 									<span class="text-decoration-none" href="#"><?= $perfume['qtde']; ?></span>
 								</div>
 								<!-- <div class="col">R$ 44.00 <span class="close">&#10005;</span></div> -->
-								<div class="col text-right">R$ <?= $perfume['preco']; ?> <a href="<?= base_url('carrinho/remover/' . $index); ?>"><span class="close">&#10005;</span></a></div>
+								<div class="col text-right">R$ <?= $perfume['preco']; ?> <a class="text-decoration-none" href="<?= base_url('carrinho/remover/' . $index); ?>"><span class="close text-danger">&#10005;</span></a></div>
 							</div>
 						<?php endforeach; ?>
 					</div>
