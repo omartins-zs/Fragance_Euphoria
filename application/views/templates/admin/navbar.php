@@ -40,6 +40,10 @@
             </div>
         </li>
 
+		<li class="nav-item my-auto">
+			<a class="btn btn-dark btn-sm" href="<?= base_url() ?>" target="_blank">Acessar Ecommerce<i class="ml-1 fas fa-store"></i></a>
+		</li>
+
         <div class="topbar-divider d-none d-sm-block"></div>
 
         <!-- Nav Item - User Information -->

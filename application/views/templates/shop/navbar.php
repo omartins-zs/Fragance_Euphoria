@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="<?= base_url() ?>">Fragance Euphoria</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,22 +10,25 @@
 					<a class="nav-link active" aria-current="page" href="<?= base_url() ?>">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?= base_url() ?>Shop">Promoções</a>
+					<a class="nav-link" href="<?= base_url() ?>Shop/promocoes">Promoções</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Link</a>
+					<a class="nav-link" href="<?= base_url() ?>Shop/blog">Blog</a>
 				</li>
+				<!-- <li class="nav-item">
+					<a class="nav-link" href="#">Link</a>
+				</li> -->
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						Dropdown
+						Categorias
 					</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
+						<li><a class="dropdown-item" href="<?= base_url() ?>Shop/produtos/Masculino">Masculino</a></li>
+						<li><a class="dropdown-item" href="<?= base_url() ?>Shop/produtos/Feminino">Feminino</a></li>
 						<li>
 							<hr class="dropdown-divider">
 						</li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
+						<li><a class="dropdown-item" href="#">Todos</a></li>
 					</ul>
 				</li>
 				<!-- <li class="nav-item">
@@ -33,10 +36,15 @@
 				</li> -->
 			</ul>
 			<form class="d-flex" role="search">
-				<button class="btn btn-outline-dark" type="submit">
+				<a href="<?= base_url() ?>admin/" class="btn btn-light mx-2">
+					<i class="fas fa-tachometer-alt"></i>
+					Acessar Administrativo
+				</a>
+				<a href="<?= base_url() ?>Carrinho/" class="btn btn-outline-light">
 					<i class="fas fa-shopping-cart"></i>
-					Cart
-					<span class="badge bg-dark text-white ms-1 rounded-pill">0</span></button>
+					Carrinho
+					<span class="badge bg-info text-white ms-1 rounded-pill"><?= $produtosNoCarrinho ?></span>
+				</a>
 			</form>
 		</div>
 	</div>

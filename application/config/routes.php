@@ -58,3 +58,9 @@ $route['admin'] = 'admin/dashboard';
 
 // E-Commerce/ Shop(Loja de Compras)
 $route['shop'] = 'shop';
+
+// Carrinho
+$route['carrinho'] = 'carrinho';
+$route['carrinho/adicionar'] = 'carrinho/adicionar';
+$route['carrinho/remover/(:any)'] = 'carrinho/remover/$1';
+$route['carrinho/limpar'] = 'carrinho/limpar';

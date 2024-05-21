@@ -67,6 +67,7 @@ switch (ENVIRONMENT)
 {
 	case 'development':
 		error_reporting(-1);
+		set_time_limit(120);
 		ini_set('display_errors',0);
 	break;
 
