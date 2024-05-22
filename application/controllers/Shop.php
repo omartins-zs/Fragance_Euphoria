@@ -6,6 +6,11 @@ class Shop extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
+
+		if (!isset($_SESSION['carrinho'])) {
+			$_SESSION['carrinho'] = []; // Inicialize com um array vazio se não estiver definido
+		}
+
 		$dados['produtosNoCarrinho'] = $this->Carrinho_model->contarProdutosNoCarrinho($_SESSION['carrinho']);
 		$dados['perfumesAleatorios'] = $this->Perfume_model->buscaPerfumesAleatorios(4);
 
