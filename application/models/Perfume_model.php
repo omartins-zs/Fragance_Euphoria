@@ -6,8 +6,9 @@ class Perfume_model extends CI_Model
 {
 	public function buscaPerfumes()
 	{
-		$this->db->select('*');
+		$this->db->select('perfumes.*, marcas.nome as nome_marca');
 		$this->db->from('perfumes');
+		$this->db->join('marcas', 'perfumes.marca = marcas.id', 'left');
 		$result['perfumes'] = $this->db->get()->result();
 
 		// Execute a segunda consulta para obter o total de perfumes
