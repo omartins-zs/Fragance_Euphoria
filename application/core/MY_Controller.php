@@ -12,6 +12,5 @@ class MY_Controller extends CI_Controller
 		$this->load->model("Marca_model");
 		$this->load->model("Carrinho_model");
 		$this->load->model("Dashboard_model");
-		$this->load->helper("Perfume_helper");
 	}
 }
