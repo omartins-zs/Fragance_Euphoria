@@ -11,7 +11,7 @@
 							<div class="text-center">
 								<!-- Product name-->
 								<h4 class="fw-bolder my-0"><?= $perfume->nome; ?></h4>
-								<h6 class="fw-light mb-4"><?= nome_marca($perfume->marca); ?></h6>
+								<h6 class="fw-light mb-4"><?= isset($perfume->nome_marca) ? $perfume->nome_marca : 'N/A'; ?></h6>
 								<h5 class="fw-bolder mb-1 text-info">R$ <?= $perfume->preco ?></h5>
 								<p class="lead my-0"><?= $perfume->volume; ?> ML</p>
 							</div>
