@@ -33,7 +33,7 @@
                       <tr>
                           <td><img style="width: 4rem; height: 4rem; object-fit: contain;"
                                   src="<?= !empty($perfume->imagem) ? base_url('assets/admin/upload/' . $perfume->imagem) : base_url('assets/img/perfume_default.png'); ?>"
-                                  alt="<?= isset($perfume->descricao) ? $perfume->descricao : 'N/A'; ?>">
+                                  alt="<?= isset($perfume->descricao_info) ? $perfume->descricao_info : 'N/A'; ?>">
                           </td>
                           <!-- <td><img class="rounded-circle" style="width: 4rem; height: 4rem;" src="<?= base_url('assets/admin/upload/' .  $perfume->imagem); ?>"></td> -->
                           <td><?= $perfume->nome; ?></td>

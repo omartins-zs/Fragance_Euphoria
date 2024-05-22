@@ -3,7 +3,7 @@
 	<div class="container px-4 px-lg-5 my-5">
 		<div class="row gx-4 gx-lg-5 align-items-center">
 			<div class="col-md-6 mb-3 mb-md-0">
-				<img class="img-fluid" style="width: 588px; height:686px; object-fit: contain;" src="<?= !empty($perfume->imagem) ? base_url('assets/admin/upload/' . $perfume->imagem) : base_url('assets/img/perfume_default.png'); ?>" alt="<?= $perfume->descricao; ?>" />
+				<img class="img-fluid" style="width: 588px; height:686px; object-fit: contain;" src="<?= !empty($perfume->imagem) ? base_url('assets/admin/upload/' . $perfume->imagem) : base_url('assets/img/perfume_default.png'); ?>" alt="<?= $perfume->descricao_info; ?>" />
 			</div>
 			<div class="col-md-6">
 				<div class="small mb-1">SKU: <?= $perfume->id; ?></div>
