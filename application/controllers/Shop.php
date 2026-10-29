@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Shop extends MY_Controller
@@ -8,7 +8,7 @@ class Shop extends MY_Controller
 		parent::__construct();
 
 		if (!isset($_SESSION['carrinho'])) {
-			$_SESSION['carrinho'] = []; // Inicialize com um array vazio se não estiver definido
+			$_SESSION['carrinho'] = []; // Inicialize com um array vazio se nÃ£o estiver definido
 		}
 
 		$dados['produtosNoCarrinho'] = $this->Carrinho_model->contarProdutosNoCarrinho($_SESSION['carrinho']);
@@ -79,5 +79,30 @@ class Shop extends MY_Controller
 		$this->load->view('templates/shop/navbar');
 		$this->load->view('shop/detalhes');
 		$this->load->view('templates/shop/footer');
+	}
+
+	/**
+	 * Endpoint de Health Check
+	 */
+	public function health()
+	{
+		$db_status = 'disconnected';
+		try {
+			if ($this->db->simple_query('SELECT 1')) {
+				$db_status = 'connected';
+			}
+		} catch (Exception $e) {
+			$db_status = 'error: ' . $e->getMessage();
+		}
+
+		$this->output
+			->set_content_type('application/json')
+			->set_output(json_encode(array(
+				'status'    => 'ok',
+				'app'       => 'Fragance Euphoria',
+				'database'  => $db_status,
+				'php'       => phpversion(),
+				'timestamp' => date('Y-m-d H:i:s')
+			), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 	}
 }

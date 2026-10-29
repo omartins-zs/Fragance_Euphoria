@@ -5,62 +5,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | -------------------------------------------------------------------------
 | URI ROUTING
 | -------------------------------------------------------------------------
-| This file lets you re-map URI requests to specific controller functions.
-|
-| Typically there is a one-to-one relationship between a URL string
-| and its corresponding controller class/method. The segments in a
-| URL normally follow this pattern:
-|
-|	example.com/class/method/id/
-|
-| In some instances, however, you may want to remap this relationship
-| so that a different class/function is called than the one
-| corresponding to the URL.
-|
-| Please see the user guide for complete details:
-|
-|	https://codeigniter.com/userguide3/general/routing.html
-|
-| -------------------------------------------------------------------------
-| RESERVED ROUTES
-| -------------------------------------------------------------------------
-|
-| There are three reserved routes:
-|
-|	$route['default_controller'] = 'welcome';
-|
-| This route indicates which controller class should be loaded if the
-| URI contains no data. In the above example, the "welcome" class
-| would be loaded.
-|
-|	$route['404_override'] = 'errors/page_missing';
-|
-| This route will tell the Router which controller/method to use if those
-| provided in the URL cannot be matched to a valid route.
-|
-|	$route['translate_uri_dashes'] = FALSE;
-|
-| This is not exactly a route, but allows you to automatically route
-| controller and method names that contain dashes. '-' isn't a valid
-| class or method name character, so it requires translation.
-| When you set this option to TRUE, it will replace ALL dashes in the
-| controller and method URI segments.
-|
-| Examples:	my-controller/index	-> my_controller/index
-|		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'shop';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-// Administrativo
-$route['admin'] = 'admin/dashboard';
-
-// E-Commerce/ Shop(Loja de Compras)
+// E-Commerce / Loja Publica
 $route['shop'] = 'shop';
+$route['shop/produtos'] = 'shop/produtos';
+$route['shop/produtos/(:any)'] = 'shop/produtos/$1';
+$route['shop/detalhes/(:num)'] = 'shop/detalhes/$1';
+$route['shop/promocoes'] = 'shop/promocoes';
+$route['shop/blog'] = 'shop/blog';
 
-// Carrinho
+// Carrinho de Compras & Checkout
 $route['carrinho'] = 'carrinho';
 $route['carrinho/adicionar'] = 'carrinho/adicionar';
 $route['carrinho/remover/(:any)'] = 'carrinho/remover/$1';
 $route['carrinho/limpar'] = 'carrinho/limpar';
+$route['carrinho/checkout'] = 'carrinho/checkout';
+$route['carrinho/finalizar'] = 'carrinho/finalizar';
+$route['carrinho/sucesso/(:num)'] = 'carrinho/sucesso/$1';
+
+// Autenticacao Administrativa
+$route['login'] = 'admin/auth/index';
+$route['logout'] = 'admin/auth/logout';
+$route['admin/login'] = 'admin/auth/index';
+$route['admin/logout'] = 'admin/auth/logout';
+$route['admin/auth/entrar'] = 'admin/auth/entrar';
+$route['admin/auth/demo/(:any)'] = 'admin/auth/demo/$1';
+
+// Painel Administrativo
+$route['admin'] = 'admin/dashboard';
+$route['admin/dashboard'] = 'admin/dashboard';
+$route['admin/perfume'] = 'admin/perfume';
+$route['admin/marca'] = 'admin/marca';
+$route['admin/cliente'] = 'admin/cliente';
+
+// Gestao de Pedidos no Painel
+$route['admin/pedidos'] = 'admin/pedidos/index';
+$route['admin/pedidos/detalhes/(:num)'] = 'admin/pedidos/detalhes/$1';
+$route['admin/pedidos/status/(:num)'] = 'admin/pedidos/status/$1';
+
+// Health Check
+$route['health'] = 'shop/health';

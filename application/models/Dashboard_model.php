@@ -1,36 +1,53 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-
 class Dashboard_model extends CI_Model
 {
-	public function countPerfumes()
-	{
-		$this->db->select('COUNT(*) as TOTAL_PERFUMES');
-		$this->db->from('perfumes');
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->database();
+    }
 
-		$result = $this->db->get()->row()->TOTAL_PERFUMES;
+    public function countPerfumes()
+    {
+        return (int) $this->db->count_all('perfumes');
+    }
 
-		return $result;
-	}
-	
-	public function countClientes()
-	{
-		$this->db->select('COUNT(*) as TOTAL_CLIENTES');
-		$this->db->from('clientes');
+    public function countClientes()
+    {
+        return (int) $this->db->count_all('clientes');
+    }
 
-		$result = $this->db->get()->row()->TOTAL_CLIENTES;
+    public function countMarcas()
+    {
+        return (int) $this->db->count_all('marcas');
+    }
 
-		return $result;
-	}
-	
-	public function countMarcas()
-	{
-		$this->db->select('COUNT(*) as TOTAL_MARCAS');
-		$this->db->from('marcas');
+    public function countPedidos()
+    {
+        return (int) $this->db->count_all('pedidos');
+    }
 
-		$result = $this->db->get()->row()->TOTAL_MARCAS;
+    public function totalFaturamento()
+    {
+        $this->db->select_sum('total');
+        $this->db->where_in('status', array('Pago', 'Enviado', 'Entregue'));
+        $query = $this->db->get('pedidos');
+        $row = $query->row();
+        return (float) ($row->total ?? 0);
+    }
 
-		return $result;
-	}
+    public function countEstoqueBaixo($limite = 10)
+    {
+        $this->db->where('estoque <=', (int) $limite);
+        return (int) $this->db->count_all_results('perfumes');
+    }
+
+    public function pedidosRecentes($limit = 5)
+    {
+        $this->db->order_by('id', 'DESC');
+        $this->db->limit((int) $limit);
+        return $this->db->get('pedidos')->result();
+    }
 }

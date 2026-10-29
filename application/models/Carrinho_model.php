@@ -3,38 +3,47 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Carrinho_model extends CI_Model
 {
-	public function contarProdutosNoCarrinho()
-	{
-		// Verifica se o carrinho existe na sessão
-		if (isset($_SESSION['carrinho'])) {
-			// Calcula e retorna a quantidade total de produtos no carrinho
-			$quantidadeTotal = 0;
-			foreach ($_SESSION['carrinho'] as $item) {
-				$quantidadeTotal += $item['qtde'];
-			}
+    public function __construct()
+    {
+        parent::__construct();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
 
-			// echo "<pre>";
-			// print_r($quantidadeTotal);
-			// exit;
+    /**
+     * Conta o total de itens no carrinho
+     */
+    public function contarProdutosNoCarrinho($carrinho = null)
+    {
+        $itens = $carrinho ?? ($_SESSION['carrinho'] ?? array());
+        if (!is_array($itens)) {
+            return 0;
+        }
 
-			return $quantidadeTotal;
-		} else {
-			return 0;
-		}
-	}
+        $total = 0;
+        foreach ($itens as $item) {
+            $total += (int) ($item['qtde'] ?? 1);
+        }
+        return $total;
+    }
 
-	public function calcularTotalCarrinho()
-	{
-		if (isset($_SESSION['carrinho'])) {
-			$total = 0;
+    /**
+     * Calcula o valor total do carrinho
+     */
+    public function calcularTotalCarrinho($carrinho = null)
+    {
+        $itens = $carrinho ?? ($_SESSION['carrinho'] ?? array());
+        if (!is_array($itens)) {
+            return 0.0;
+        }
 
-			foreach ($_SESSION['carrinho'] as $item) {
-				$total += $item['preco'] * $item['qtde'];
-			}
-
-			return $total;
-		} else {
-			return 0;
-		}
-	}
+        $total = 0.0;
+        foreach ($itens as $item) {
+            $preco = (float) ($item['preco'] ?? 0);
+            $qtde  = (int) ($item['qtde'] ?? 1);
+            $total += $preco * $qtde;
+        }
+        return $total;
+    }
 }
