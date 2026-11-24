@@ -102,6 +102,12 @@
 	}
 }
 
-.videoDicaBlog {
-	height: 16rem !important;
+/* Efeitos e cards do Blog Olfativo */
+.hover-shadow {
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-shadow:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12) !important;
 }

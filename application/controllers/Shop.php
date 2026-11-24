@@ -39,6 +39,10 @@ class Shop extends MY_Controller
 
 	public function blog()
 	{
+		$dados['titulo'] = 'Blog Olfativo & Cuidados | Fragance Euphoria';
+		$dados['produtosNoCarrinho'] = $this->Carrinho_model->contarProdutosNoCarrinho($_SESSION['carrinho'] ?? array());
+		$this->load->vars($dados);
+
 		$this->load->view('templates/shop/header');
 		$this->load->view('templates/shop/navbar');
 		$this->load->view('shop/blog');
