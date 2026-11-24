@@ -16,10 +16,10 @@
 
 	<!-- Custom styles for this template-->
 	<link href="<?= base_url() ?>assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
-
-	<link href="<?= base_url() ?>assets/admin/css/style.css" rel="stylesheet">
+	<link href="<?= base_url() ?>assets/admin/css/style.css?v=<?= filemtime(FCPATH . 'assets/admin/css/style.css') ?>" rel="stylesheet">
 
 	<!-- Font Awesome - Icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<script src="https://kit.fontawesome.com/6739ae1e1b.js" crossorigin="anonymous"></script>
 
 </head>

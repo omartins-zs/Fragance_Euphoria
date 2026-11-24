@@ -58,7 +58,7 @@
 			<div class="col-md-12">
 				<p>
 					Copyright &copy;
-					<?= date('Y') ?> Todos os direitos reservados | <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" class="text-primary">Gabriel Martins Desenvolvimento</a>
+					<?= date('Y') ?> Todos os direitos reservados | <i class="fas fa-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" class="text-primary">Gabriel Martins Desenvolvimento</a>
 				</p>
 			</div>
 
