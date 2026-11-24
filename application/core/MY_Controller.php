@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class MY_Controller extends CI_Controller
 {
     protected $usuario_logado = null;
+    protected $cliente_logado = null;
 
     public function __construct()
     {
@@ -21,7 +22,7 @@ class MY_Controller extends CI_Controller
         $this->load->model('Usuarios_model');
         $this->load->model('Pedido_model');
 
-        // Identifica usuario autenticado
+        // Identifica usuario administrativo autenticado
         if ($this->session->userdata('admin_logado')) {
             $this->usuario_logado = array(
                 'id'     => $this->session->userdata('admin_id'),
@@ -32,6 +33,18 @@ class MY_Controller extends CI_Controller
             $this->load->vars(array('usuario_logado' => $this->usuario_logado));
         }
 
+        // Identifica cliente comprador autenticado
+        if ($this->session->userdata('cliente_logado')) {
+            $this->cliente_logado = array(
+                'id'       => $this->session->userdata('cliente_id'),
+                'nome'     => $this->session->userdata('cliente_nome'),
+                'email'    => $this->session->userdata('cliente_email'),
+                'endereco' => $this->session->userdata('cliente_endereco'),
+                'celular'  => $this->session->userdata('cliente_celular')
+            );
+            $this->load->vars(array('cliente_logado' => $this->cliente_logado));
+        }
+
         // Protecao das rotas que iniciam com "admin", exceto login e auth
         $uri = trim($this->uri->uri_string(), '/');
         if (preg_match('#^admin(?!\/(auth|login))#i', $uri)) {
@@ -39,6 +52,19 @@ class MY_Controller extends CI_Controller
                 $this->session->set_flashdata('erro', 'Por favor, autentique-se para acessar o painel administrativo.');
                 redirect(base_url('admin/login'));
             }
+        }
+    }
+
+    protected function isClienteLogado()
+    {
+        return (bool) $this->session->userdata('cliente_logado');
+    }
+
+    protected function exigirClienteLogado()
+    {
+        if (!$this->isClienteLogado()) {
+            $this->session->set_flashdata('erro', 'Por favor, acesse sua conta de cliente para visualizar seus pedidos e dados.');
+            redirect(base_url('cliente/login'));
         }
     }
 

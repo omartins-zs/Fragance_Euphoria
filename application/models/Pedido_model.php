@@ -119,5 +119,27 @@ class Pedido_model extends CI_Model
         $query = $this->db->get($this->table);
         return $query->result();
     }
+
+    /**
+     * Retorna os pedidos de um cliente especifico pelo e-mail
+     */
+    public function get_pedidos_by_email($email)
+    {
+        $this->db->where('cliente_email', strtolower(trim($email)));
+        $this->db->order_by('id', 'DESC');
+        $query = $this->db->get($this->table);
+        return $query->result();
+    }
+
+    /**
+     * Retorna um pedido validando a titularidade pelo e-mail
+     */
+    public function get_pedido_by_id_and_email($id, $email)
+    {
+        $this->db->where('id', (int) $id);
+        $this->db->where('cliente_email', strtolower(trim($email)));
+        $query = $this->db->get($this->table);
+        return $query->row();
+    }
 }
 
