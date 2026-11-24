@@ -9,6 +9,10 @@ Guia consolidado de portas, serviços, credenciais dos seeders e roteiro de vali
 | Serviço | Ambiente Docker | Ambiente Local (Host) | Descrição |
 |---|---|---|---|
 | **Loja Virtual (Shop)** | [http://localhost:8080](http://localhost:8080) | [http://localhost:8000](http://localhost:8000) | Vitrine de perfumes, categorias, promoções e blog |
+| **Área do Cliente (Login)** | [http://localhost:8080/cliente/login](http://localhost:8080/cliente/login) | [http://localhost:8000/cliente/login](http://localhost:8000/cliente/login) | Login e cadastro de clientes com atalhos em 1 clique |
+| **Minha Conta** | [http://localhost:8080/cliente/conta](http://localhost:8080/cliente/conta) | [http://localhost:8000/cliente/conta](http://localhost:8000/cliente/conta) | Gestão de dados cadastrais e endereço principal |
+| **Meus Pedidos** | [http://localhost:8080/cliente/pedidos](http://localhost:8080/cliente/pedidos) | [http://localhost:8000/cliente/pedidos](http://localhost:8000/cliente/pedidos) | Histórico e detalhes dos pedidos do comprador |
+| **Cartões Salvos** | [http://localhost:8080/cliente/cartoes](http://localhost:8080/cliente/cartoes) | [http://localhost:8000/cliente/cartoes](http://localhost:8000/cliente/cartoes) | Gerenciamento seguro de cartões salvos (PCI-DSS) |
 | **Carrinho de Compras** | [http://localhost:8080/carrinho](http://localhost:8080/carrinho) | [http://localhost:8000/carrinho](http://localhost:8000/carrinho) | Gestão de itens no carrinho e cálculo de frete |
 | **Checkout (Novo)** | [http://localhost:8080/carrinho/checkout](http://localhost:8080/carrinho/checkout) | [http://localhost:8000/carrinho/checkout](http://localhost:8000/carrinho/checkout) | Finalização de compra e pagamento |
 | **Login do Painel** | [http://localhost:8080/admin/login](http://localhost:8080/admin/login) | [http://localhost:8000/admin/login](http://localhost:8000/admin/login) | Formulário e botões de login em 1 clique |
@@ -29,6 +33,17 @@ Todos os usuários contam com senha padrão `Password@123` e botões de **login 
 | **Admin** | Administrador Fragance | `admin@fragance.com` | `Password@123` | Acesso total: dashboard financeiro, perfumes, marcas, clientes e pedidos |
 | **Gerente** | Gerente de Vendas | `gerente@fragance.com` | `Password@123` | Gestão de produtos, controle de estoque e alteração de status de pedidos |
 | **Atendente** | Atendente de Loja | `atendente@fragance.com` | `Password@123` | Visualização de estoque, consulta de clientes e leitura de pedidos |
+
+### 👤 Credenciais de Clientes de Teste (Área do Cliente)
+
+Para testar a Área do Cliente, acompanhamento de pedidos e cartões de crédito salvos:
+
+| Cliente | E-mail | Senha | Pedidos | Cartões Salvos |
+|---|---|---|---|---|
+| **Lucas Guimarães** | `lucasguimaraes@email.com` | `12345` | Pedido #1 (R$ 719,90) | Mastercard final •••• 4242 |
+| **Mariana Silva** | `mariana.silva@email.com` | `12345` | Pedido #2 (R$ 445,00) | Nenhum cartão salvo |
+
+> 💡 Na tela de login do cliente (`/cliente/login`), você encontra botões de **acesso rápido em 1 clique** para testar imediatamente como Lucas ou Mariana.
 
 ---
 

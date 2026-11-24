@@ -233,13 +233,74 @@ $res = request('GET', '/admin/marca/novo');
 assertTest('GET', '/admin/marca/novo (Atendente BLOQUEADO de cadastrar marca)', isRedirect($res['code']), "Code: {$res['code']}");
 
 
-echo "\n--- 6. Logout ---\n";
+echo "\n--- 6. Logout Admin ---\n";
 
 $res = request('GET', '/admin/logout');
 assertTest('GET /admin/logout (Destroi sessao)', isRedirect($res['code']), "Code: {$res['code']}");
 
 $res = request('GET', '/admin/dashboard');
 assertTest('GET /admin/dashboard apos logout redireciona para login', isRedirect($res['code']), "Code: {$res['code']}");
+
+
+echo "\n--- 7. Portal do Cliente (Minha Conta, Pedidos e Cartões) ---\n";
+
+@unlink($cookieJar);
+$cookieJar = tempnam(sys_get_temp_dir(), 'ci_cookie_');
+
+$res = request('GET', '/cliente/login');
+assertTest('GET /cliente/login (Tela de login do cliente)', $res['code'] === 200 && strpos($res['body'], 'Área do Cliente') !== false, "Code: {$res['code']}");
+
+$res = request('GET', '/cliente/cadastro');
+assertTest('GET /cliente/cadastro (Tela de cadastro de cliente)', $res['code'] === 200 && strpos($res['body'], 'Cadastro de Cliente') !== false, "Code: {$res['code']}");
+
+$res = request('GET', '/cliente/conta');
+assertTest('GET /cliente/conta sem login redireciona para login', isRedirect($res['code']), "Code: {$res['code']}");
+
+$res = request('GET', '/cliente/pedidos');
+assertTest('GET /cliente/pedidos sem login redireciona', isRedirect($res['code']), "Code: {$res['code']}");
+
+$res = request('GET', '/cliente/cartoes');
+assertTest('GET /cliente/cartoes sem login redireciona', isRedirect($res['code']), "Code: {$res['code']}");
+
+// Login de teste em 1 clique
+$res = request('GET', '/cliente/demo/lucas');
+assertTest('GET /cliente/demo/lucas (Login rapido de cliente)', isRedirect($res['code']), "Code: {$res['code']}");
+
+$res = request('GET', '/cliente/conta');
+assertTest('GET /cliente/conta (Logado como Lucas Guimarães)', $res['code'] === 200 && strpos($res['body'], 'Lucas Guimarães') !== false, "Code: {$res['code']}");
+
+$res = request('GET', '/minha-conta');
+assertTest('GET /minha-conta (Alias acessivel)', $res['code'] === 200, "Code: {$res['code']}");
+
+$res = request('GET', '/cliente/pedidos');
+assertTest('GET /cliente/pedidos (Histórico de pedidos do cliente)', $res['code'] === 200 && strpos($res['body'], 'Meus Pedidos') !== false, "Code: {$res['code']}");
+
+$res = request('GET', '/cliente/pedidos/1');
+assertTest('GET /cliente/pedidos/1 (Detalhes do pedido #1)', $res['code'] === 200 && strpos($res['body'], 'Pedido #1') !== false, "Code: {$res['code']}");
+
+$res = request('GET', '/cliente/pedidos/2');
+assertTest('Segurança IDOR: GET /cliente/pedidos/2 (Pedido de outro cliente) redireciona', isRedirect($res['code']), "Code: {$res['code']}");
+
+$res = request('GET', '/cliente/cartoes');
+assertTest('GET /cliente/cartoes (Cartões salvos com segurança)', $res['code'] === 200 && strpos($res['body'], '4242') !== false, "Code: {$res['code']}");
+
+$res = request('POST', '/cliente/cartoes/salvar', [
+    'nome_titular' => 'LUCAS GUIMARAES',
+    'numero_cartao' => '4000 1234 5678 9988',
+    'validade' => '11/30',
+    'cvv' => '999',
+    'bandeira' => 'Visa'
+]);
+assertTest('POST /cliente/cartoes/salvar (Salva cartão com máscara segura)', isRedirect($res['code']), "Code: {$res['code']}");
+
+$res = request('GET', '/cliente/cartoes');
+assertTest('GET /cliente/cartoes exibe novo cartão com final 9988', $res['code'] === 200 && strpos($res['body'], '9988') !== false, "Code: {$res['code']}");
+
+$res = request('GET', '/cliente/logout');
+assertTest('GET /cliente/logout (Destroi sessao do cliente)', isRedirect($res['code']), "Code: {$res['code']}");
+
+$res = request('GET', '/cliente/conta');
+assertTest('GET /cliente/conta apos logout redireciona para login', isRedirect($res['code']), "Code: {$res['code']}");
 
 @unlink($cookieJar);
 

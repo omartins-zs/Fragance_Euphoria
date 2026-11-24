@@ -43,7 +43,8 @@ graph TD
 - **Catálogo Dinâmico:** Listagem com filtros por gênero (*Masculino*, *Feminino*, *Unissex*) e marcas.
 - **Página de Detalhes:** Ficha técnica olfativa, notas aromáticas, volume em ml e fotos dos frascos.
 - **Carrinho Interativo:** Adição de múltiplos produtos, alteração de quantidades, exclusão e cálculo dinâmico de frete.
-- **Fluxo de Checkout Completo (Novo):** Formulário de endereço de entrega, opções de pagamento (*PIX*, *Cartão de Crédito* ou *Boleto*), criação de pedido no banco, baixa automática no estoque e tela de recibo de compra.
+- **Fluxo de Checkout Completo:** Formulário de endereço de entrega com preenchimento automático para clientes conectados, opções de pagamento (*PIX*, *Cartão de Crédito*, *Cartões Salvos* ou *Boleto*), criação de pedido no banco, baixa automática no estoque e recibo protegido contra IDOR.
+- **Área do Cliente / Minha Conta (Novo):** Autenticação dedicada de clientes (`/cliente/login`), atalhos de teste em 1 clique, acompanhamento de pedidos (`/cliente/pedidos`), gestão de dados cadastrais com endereço de entrega e carteira segura de cartões de crédito salvos (`/cliente/cartoes`).
 
 ### 🛡️ Painel Administrativo (Backoffice)
 - **Dashboard com Métricas em Tempo Real:** Faturamento acumulado (R$), total de pedidos, perfumes cadastrados e alertas de estoque crítico (&le; 10 unidades).
