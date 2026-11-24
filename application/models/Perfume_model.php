@@ -21,12 +21,13 @@ class Perfume_model extends CI_Model
 
 	public function buscaPerfumesPorTipo($tipo)
 	{
-		$this->db->select('*');
+		$this->db->select('perfumes.*, marcas.nome as nome_marca');
 		$this->db->from('perfumes');
+		$this->db->join('marcas', 'perfumes.marca = marcas.id', 'left');
 
 		// Adiciona a condição para buscar por tipo
-		if ($tipo !== 'Todos') {
-			$this->db->where('tipo', $tipo);
+		if ($tipo !== null && $tipo !== 'Todos') {
+			$this->db->where('perfumes.tipo', $tipo);
 		}
 
 		return $this->db->get()->result();
@@ -35,8 +36,9 @@ class Perfume_model extends CI_Model
 	public function buscaPerfumesAleatorios($quantidade)
 	{
 		// Seleciona perfumes aleatórios limitados pela quantidade desejada
-		$this->db->select('*');
+		$this->db->select('perfumes.*, marcas.nome as nome_marca');
 		$this->db->from('perfumes');
+		$this->db->join('marcas', 'perfumes.marca = marcas.id', 'left');
 		$this->db->order_by('RAND()');
 		$this->db->limit($quantidade);
 

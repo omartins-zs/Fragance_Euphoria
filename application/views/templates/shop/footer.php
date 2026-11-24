@@ -58,7 +58,6 @@
 			<div class="col-md-12">
 				<p>
 					Copyright &copy;
-					<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 					<?= date('Y') ?> Todos os direitos reservados | <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" class="text-primary">Gabriel Martins Desenvolvimento</a>
 				</p>
 			</div>

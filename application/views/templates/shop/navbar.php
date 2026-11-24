@@ -43,3 +43,8 @@
 		</div>
 	</div>
 </nav>
+<?php if ($this->session->flashdata('aviso')) : ?>
+	<div class="container mt-3">
+		<div class="alert alert-warning text-center mb-0"><?= $this->session->flashdata('aviso'); ?></div>
+	</div>
+<?php endif; ?>

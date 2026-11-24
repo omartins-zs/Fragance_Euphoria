@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Shop extends MY_Controller
@@ -8,7 +8,7 @@ class Shop extends MY_Controller
 		parent::__construct();
 
 		if (!isset($_SESSION['carrinho'])) {
-			$_SESSION['carrinho'] = []; // Inicialize com um array vazio se nÃ£o estiver definido
+			$_SESSION['carrinho'] = []; // Inicialize com um array vazio se não estiver definido
 		}
 
 		$dados['produtosNoCarrinho'] = $this->Carrinho_model->contarProdutosNoCarrinho($_SESSION['carrinho']);
@@ -45,7 +45,7 @@ class Shop extends MY_Controller
 		$this->load->view('templates/shop/footer');
 	}
 
-	public function produtos($tipo = null)
+	public function produtos($tipo = 'Todos')
 	{
 		// echo "<pre>";
 		// print_r($tipo);
@@ -70,7 +70,10 @@ class Shop extends MY_Controller
 
 	public function detalhes($id)
 	{
-		$dados['perfume'] = $this->Perfume_model->buscaperfumePorId($id);
+		$dados['perfume'] = $this->Perfume_model->buscaperfumePorId((int) $id);
+		if (!$dados['perfume']) {
+			show_404();
+		}
 		$dados['marcas'] = $this->Marca_model->buscaMarcas();
 
 		$this->load->vars($dados);

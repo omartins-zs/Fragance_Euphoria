@@ -6,9 +6,6 @@ class Carrinho extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
         if (!isset($_SESSION['carrinho'])) {
             $_SESSION['carrinho'] = array();
         }
@@ -31,9 +28,15 @@ class Carrinho extends MY_Controller
     {
         $id         = (int) $this->input->post('id', TRUE);
         $quantidade = max(1, (int) $this->input->post('quantidade', TRUE));
-        $preco      = (float) $this->input->post('preco', TRUE);
-        $nome       = trim($this->input->post('nome', TRUE));
-        $imagem     = trim($this->input->post('imagem', TRUE));
+
+        // Preco, nome e imagem vem do banco: campos enviados pelo navegador podem ser adulterados
+        $perfume = $this->Perfume_model->buscaPerfumePorId($id);
+        if (!$perfume) {
+            redirect(base_url('shop'));
+        }
+        $preco  = (float) $perfume->preco;
+        $nome   = $perfume->nome;
+        $imagem = (string) $perfume->imagem;
 
         $produto_no_carrinho = false;
         foreach ($_SESSION['carrinho'] as &$item) {
@@ -103,10 +106,10 @@ class Carrinho extends MY_Controller
             redirect(base_url('shop'));
         }
 
-        $nome      = trim($this->input->post('nome', TRUE));
-        $email     = trim($this->input->post('email', TRUE));
-        $celular   = trim($this->input->post('celular', TRUE));
-        $endereco  = trim($this->input->post('endereco', TRUE));
+        $nome      = trim((string) $this->input->post('nome', TRUE));
+        $email     = trim((string) $this->input->post('email', TRUE));
+        $celular   = trim((string) $this->input->post('celular', TRUE));
+        $endereco  = trim((string) $this->input->post('endereco', TRUE));
         $pagamento = trim($this->input->post('forma_pagamento', TRUE) ?: 'PIX');
 
         if (empty($nome) || empty($email) || empty($endereco)) {
@@ -129,8 +132,9 @@ class Carrinho extends MY_Controller
         $pedido_id = $this->Pedido_model->criar_pedido($dados_pedido, $_SESSION['carrinho']);
 
         if ($pedido_id) {
-            // Limpa o carrinho
+            // Limpa o carrinho e libera o recibo apenas para quem fez o pedido
             $_SESSION['carrinho'] = array();
+            $_SESSION['pedidos_realizados'][] = (int) $pedido_id;
             redirect(base_url('carrinho/sucesso/' . $pedido_id));
         } else {
             $this->session->set_flashdata('erro', 'Ocorreu um erro ao processar o seu pedido. Tente novamente.');
@@ -143,7 +147,7 @@ class Carrinho extends MY_Controller
      */
     public function sucesso($id = null)
     {
-        if (!$id) {
+        if (!$id || !in_array((int) $id, $_SESSION['pedidos_realizados'] ?? array(), TRUE)) {
             redirect(base_url('shop'));
         }
 

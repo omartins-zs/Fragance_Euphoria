@@ -7,13 +7,99 @@
 .zoom-fade img {
 	width: 100%;
 	height: auto;
-	transition: transform 0.5s ease-in-out;
+	transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.zoom-fade::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0) 45%);
+	opacity: 0;
+	transition: opacity 0.4s ease;
 }
 
 .zoom-fade:hover img {
-	transform: scale(1.1);
-	opacity: 0.6;
+	transform: scale(1.06);
+}
 
+.zoom-fade:hover::after {
+	opacity: 1;
+}
+
+/* Cards de coleção da home */
+.block-2-item {
+	display: block;
+	text-decoration: none;
+	color: inherit;
+}
+
+.block-2-item:hover,
+.block-2-item:focus {
+	text-decoration: none;
+	color: inherit;
+}
+
+.block-2-item .image {
+	margin-bottom: 1rem;
+	border-radius: 14px;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+	transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.block-2-item .image img {
+	aspect-ratio: 2 / 3;
+	object-fit: cover;
+}
+
+.block-2-item:hover .image,
+.block-2-item:focus-visible .image {
+	transform: translateY(-6px);
+	box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16);
+}
+
+.block-2-item .text span {
+	font-size: 0.75rem;
+	letter-spacing: 0.15em;
+	color: #6c757d;
+}
+
+.block-2-item .text h3 {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 0.15rem 0 0;
+	font-weight: 700;
+	color: #212529;
+	transition: color 0.3s ease;
+}
+
+.block-2-item .text h3::after {
+	content: "\2192";
+	font-size: 0.8em;
+	opacity: 0;
+	transform: translateX(-8px);
+	transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.block-2-item:hover .text h3,
+.block-2-item:focus-visible .text h3 {
+	color: #3858fc;
+}
+
+.block-2-item:hover .text h3::after,
+.block-2-item:focus-visible .text h3::after {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+/* No celular o frasco do banner fica atrás do texto: mantém só o azul */
+@media (max-width: 767.98px) {
+	.hero-banner {
+		background: #3858fc !important;
+		height: auto !important;
+		padding: 4rem 0;
+	}
 }
 
 .videoDicaBlog {
