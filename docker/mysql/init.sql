@@ -152,3 +152,23 @@ INSERT INTO `itens_pedido` (`id`, `pedido_id`, `perfume_id`, `nome_produto`, `qu
 (2, 1, 2, 'Quasar Graffiti', 1, 144.90, 144.90),
 (3, 2, 6, 'Olympéa', 1, 445.00, 445.00);
 
+-- --------------------------------------------------------
+-- Estrutura da tabela `cartoes_cliente`
+-- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cartoes_cliente` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cliente_id` int NOT NULL,
+  `nome_titular` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ultimos_digitos` varchar(4) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bandeira` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Mastercard',
+  `validade` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `criado_em` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `cliente_id` (`cliente_id`),
+  CONSTRAINT `fk_cartoes_cliente` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `cartoes_cliente` (`id`, `cliente_id`, `nome_titular`, `ultimos_digitos`, `bandeira`, `validade`) VALUES
+(1, 1, 'LUCAS G CAMPOS', '4242', 'Mastercard', '08/29');
+
+
