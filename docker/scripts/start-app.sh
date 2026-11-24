@@ -31,3 +31,4 @@ done
 
 echo "[Fragance Euphoria] Banco de dados pronto. Iniciando PHP-FPM..."
 exec php-fpm
+

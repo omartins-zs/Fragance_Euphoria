@@ -84,3 +84,4 @@ networks:
 volumes:
   fragance_mysql_data:
     driver: local
+

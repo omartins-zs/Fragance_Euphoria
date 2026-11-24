@@ -114,3 +114,4 @@ Consulte as instruções detalhadas em [`docs/COMO_EXECUTAR_LOCAL.md`](file:///C
 Feito com ❤️ por **[Gabriel Martins](https://github.com/omartins-zs)** 🚀
 
 </div>
+

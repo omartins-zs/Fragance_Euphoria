@@ -41,3 +41,4 @@ php -S localhost:8000
 ```
 
 Para consultar as credenciais e roteiro de validação, veja [`docs/ACESSOS_TESTES.md`](file:///C:/Projetos/Fragance_Euphoria/docs/ACESSOS_TESTES.md).
+

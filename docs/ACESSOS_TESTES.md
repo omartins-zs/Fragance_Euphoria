@@ -83,3 +83,4 @@ Resposta esperada:
 1. No canto superior direito da barra de topo, clique na foto do perfil.
 2. Clique em **Sair do Painel**.
 3. A sessão será finalizada e redirecionada para a tela de login.
+

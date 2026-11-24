@@ -97,3 +97,4 @@ Para derrubar removendo volumes persistidos:
 ```bash
 docker compose down -v
 ```
+

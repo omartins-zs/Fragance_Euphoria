@@ -137,3 +137,4 @@
 </div>
 
 <?php $this->load->view('templates/shop/js'); ?>
+

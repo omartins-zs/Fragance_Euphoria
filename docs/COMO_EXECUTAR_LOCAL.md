@@ -61,3 +61,4 @@ php -S localhost:8000
 - **Login do Painel Admin:** [http://localhost:8000/admin/login](http://localhost:8000/admin/login)
 
 Para credenciais de login e testes rápidos em 1 clique, consulte [`docs/ACESSOS_TESTES.md`](file:///C:/Projetos/Fragance_Euphoria/docs/ACESSOS_TESTES.md).
+

@@ -73,3 +73,4 @@ class Pedidos extends MY_Controller
         redirect(base_url('admin/pedidos/detalhes/' . $id));
     }
 }
+

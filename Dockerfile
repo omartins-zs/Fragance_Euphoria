@@ -58,3 +58,4 @@ RUN chmod +x /usr/local/bin/start-app.sh
 EXPOSE 9000
 
 CMD ["/usr/local/bin/start-app.sh"]
+
