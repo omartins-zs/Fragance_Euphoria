@@ -16,6 +16,7 @@ class Carrinho extends MY_Controller
         $dados['produtosNoCarrinho'] = $this->Carrinho_model->contarProdutosNoCarrinho($_SESSION['carrinho']);
         $dados['totalCarrinho']      = $this->Carrinho_model->calcularTotalCarrinho($_SESSION['carrinho']);
         $dados['perfumesDoCarrinho']  = $_SESSION['carrinho'];
+        $dados['cartoesSalvos']      = $this->isClienteLogado() ? $this->Cliente_model->getCartoes($this->cliente_logado['id']) : array();
 
         $this->load->vars($dados);
         $this->load->view('templates/shop/header');
@@ -89,6 +90,7 @@ class Carrinho extends MY_Controller
         $dados['produtosNoCarrinho'] = $this->Carrinho_model->contarProdutosNoCarrinho($_SESSION['carrinho']);
         $dados['totalCarrinho']      = $this->Carrinho_model->calcularTotalCarrinho($_SESSION['carrinho']);
         $dados['perfumesDoCarrinho']  = $_SESSION['carrinho'];
+        $dados['cartoesSalvos']      = $this->isClienteLogado() ? $this->Cliente_model->getCartoes($this->cliente_logado['id']) : array();
 
         $this->load->vars($dados);
         $this->load->view('templates/shop/header');

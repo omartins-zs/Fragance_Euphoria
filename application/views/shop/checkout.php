@@ -13,6 +13,22 @@
         </div>
     <?php endif; ?>
 
+    <?php if ($this->session->userdata('cliente_logado')): ?>
+        <div class="alert alert-info py-2 px-3 mb-4 d-flex justify-content-between align-items-center">
+            <div>
+                <i class="fas fa-user-check mr-2"></i>Conectado como <strong><?= html_escape($this->session->userdata('cliente_nome')); ?></strong>. Seus dados cadastrados foram preenchidos automaticamente.
+            </div>
+            <a href="<?= base_url('cliente/conta') ?>" class="btn btn-sm btn-outline-primary">Alterar na Minha Conta</a>
+        </div>
+    <?php else: ?>
+        <div class="alert alert-light border py-2 px-3 mb-4 d-flex justify-content-between align-items-center">
+            <div>
+                <i class="fas fa-info-circle text-primary mr-2"></i>Já possui cadastro? Faça login para preencher seus dados e cartões salvos automaticamente.
+            </div>
+            <a href="<?= base_url('cliente/login') ?>" class="btn btn-sm btn-outline-primary font-weight-bold">Fazer Login</a>
+        </div>
+    <?php endif; ?>
+
     <form action="<?= base_url('carrinho/finalizar') ?>" method="POST">
         <div class="row">
             <!-- Dados de Entrega e Pagamento -->
@@ -24,25 +40,25 @@
                         </h5>
                     </div>
                     <div class="card-body p-4">
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="nome" class="font-weight-bold small text-muted text-uppercase">Nome Completo <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex: Lucas Guimarães" required>
+                            <input type="text" class="form-control" id="nome" name="nome" value="<?= html_escape($this->session->userdata('cliente_nome') ?? ''); ?>" placeholder="Ex: Lucas Guimarães" required>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-6 form-group mb-3">
                                 <label for="email" class="font-weight-bold small text-muted text-uppercase">E-mail <span class="text-danger">*</span></label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+                                <input type="email" class="form-control" id="email" name="email" value="<?= html_escape($this->session->userdata('cliente_email') ?? ''); ?>" placeholder="seu.email@exemplo.com" required>
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-6 form-group mb-3">
                                 <label for="celular" class="font-weight-bold small text-muted text-uppercase">WhatsApp / Celular <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="celular" name="celular" placeholder="(11) 98765-4321" required>
+                                <input type="text" class="form-control" id="celular" name="celular" value="<?= html_escape($this->session->userdata('cliente_celular') ?? ''); ?>" placeholder="(11) 98765-4321" required>
                             </div>
                         </div>
 
                         <div class="form-group mb-0">
                             <label for="endereco" class="font-weight-bold small text-muted text-uppercase">Endereço de Entrega Completo <span class="text-danger">*</span></label>
-                            <textarea class="form-control" id="endereco" name="endereco" rows="3" placeholder="Rua/Avenida, Número, Complemento, Bairro, Cidade - UF, CEP" required></textarea>
+                            <textarea class="form-control" id="endereco" name="endereco" rows="3" placeholder="Rua/Avenida, Número, Complemento, Bairro, Cidade - UF, CEP" required><?= html_escape($this->session->userdata('cliente_endereco') ?? ''); ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -55,28 +71,44 @@
                         </h5>
                     </div>
                     <div class="card-body p-4">
-                        <div class="custom-control custom-radio mb-3">
-                            <input type="radio" id="pagamentoPix" name="forma_pagamento" value="PIX" class="custom-control-input" checked>
-                            <label class="custom-control-label font-weight-bold" for="pagamentoPix">
+                        <?php if (!empty($cartoesSalvos)): ?>
+                            <div class="p-3 bg-light rounded border mb-3">
+                                <label class="small font-weight-bold text-muted text-uppercase d-block mb-2">
+                                    <i class="fas fa-wallet mr-1 text-primary"></i> Seus Cartões Salvos
+                                </label>
+                                <?php foreach ($cartoesSalvos as $idx => $cartao): ?>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="forma_pagamento" id="cartao_<?= $cartao->id ?>" value="Cartão de Crédito (<?= $cartao->bandeira ?> final <?= $cartao->ultimos_digitos ?>)">
+                                        <label class="form-check-label font-weight-bold" for="cartao_<?= $cartao->id ?>">
+                                            <i class="fas fa-credit-card text-info me-1"></i> <?= $cartao->bandeira ?> final •••• <?= $cartao->ultimos_digitos ?> (Validade: <?= $cartao->validade ?>)
+                                        </label>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="form-check mb-3">
+                            <input type="radio" id="pagamentoPix" name="forma_pagamento" value="PIX" class="form-check-input" checked>
+                            <label class="form-check-label font-weight-bold" for="pagamentoPix">
                                 <i class="fas fa-bolt text-warning mr-1"></i> PIX (Aprovação Instantânea)
                             </label>
-                            <small class="d-block text-muted ml-4">Liberação imediata para envio do seu pedido.</small>
+                            <small class="d-block text-muted">Liberação imediata para envio do seu pedido.</small>
                         </div>
 
-                        <div class="custom-control custom-radio mb-3">
-                            <input type="radio" id="pagamentoCartao" name="forma_pagamento" value="Cartão de Crédito" class="custom-control-input">
-                            <label class="custom-control-label font-weight-bold" for="pagamentoCartao">
-                                <i class="fas fa-credit-card text-primary mr-1"></i> Cartão de Crédito em até 12x
+                        <div class="form-check mb-3">
+                            <input type="radio" id="pagamentoCartao" name="forma_pagamento" value="Cartão de Crédito" class="form-check-input">
+                            <label class="form-check-label font-weight-bold" for="pagamentoCartao">
+                                <i class="fas fa-credit-card text-primary mr-1"></i> Novo Cartão de Crédito em até 12x
                             </label>
-                            <small class="d-block text-muted ml-4">Parcelamento em até 3x sem juros.</small>
+                            <small class="d-block text-muted">Parcelamento em até 3x sem juros.</small>
                         </div>
 
-                        <div class="custom-control custom-radio">
-                            <input type="radio" id="pagamentoBoleto" name="forma_pagamento" value="Boleto Bancário" class="custom-control-input">
-                            <label class="custom-control-label font-weight-bold" for="pagamentoBoleto">
+                        <div class="form-check">
+                            <input type="radio" id="pagamentoBoleto" name="forma_pagamento" value="Boleto Bancário" class="form-check-input">
+                            <label class="form-check-label font-weight-bold" for="pagamentoBoleto">
                                 <i class="fas fa-barcode text-dark mr-1"></i> Boleto Bancário
                             </label>
-                            <small class="d-block text-muted ml-4">Compensação em até 2 dias úteis.</small>
+                            <small class="d-block text-muted">Compensação em até 2 dias úteis.</small>
                         </div>
                     </div>
                 </div>

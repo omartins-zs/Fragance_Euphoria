@@ -32,7 +32,26 @@
 				</li>
 			</ul>
 			<div class="d-flex align-items-center">
-				<a href="<?= base_url('admin') ?>" class="btn btn-outline-light btn-sm mx-2 font-weight-bold">
+				<?php if ($this->session->userdata('cliente_logado')): ?>
+					<div class="dropdown mx-1">
+						<button class="btn btn-outline-warning btn-sm dropdown-toggle font-weight-bold text-warning" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="fas fa-user-circle mr-1"></i> Olá, <?= html_escape(explode(' ', (string) $this->session->userdata('cliente_nome'))[0]); ?>
+						</button>
+						<ul class="dropdown-menu dropdown-menu-end shadow">
+							<li><a class="dropdown-item" href="<?= base_url('cliente/conta') ?>"><i class="fas fa-id-card mr-2 text-primary"></i> Meus Dados & Endereço</a></li>
+							<li><a class="dropdown-item" href="<?= base_url('cliente/pedidos') ?>"><i class="fas fa-box-open mr-2 text-success"></i> Meus Pedidos</a></li>
+							<li><a class="dropdown-item" href="<?= base_url('cliente/cartoes') ?>"><i class="fas fa-credit-card mr-2 text-info"></i> Cartões Salvos</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item text-danger" href="<?= base_url('cliente/logout') ?>"><i class="fas fa-sign-out-alt mr-2"></i> Sair</a></li>
+						</ul>
+					</div>
+				<?php else: ?>
+					<a href="<?= base_url('cliente/login') ?>" class="btn btn-outline-light btn-sm mx-1 font-weight-bold">
+						<i class="fas fa-user mr-1"></i> Entrar / Cadastro
+					</a>
+				<?php endif; ?>
+
+				<a href="<?= base_url('admin') ?>" class="btn btn-outline-light btn-sm mx-1 font-weight-bold">
 					<i class="fas fa-lock mr-1"></i> Painel Admin
 				</a>
 				<a href="<?= base_url('carrinho') ?>" class="btn btn-warning btn-sm font-weight-bold text-dark">
