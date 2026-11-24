@@ -76,8 +76,6 @@ class Usuarios_model extends CI_Model
             $senha_valida = true;
         } elseif ($usuario->senha === $senha || sha1($senha) === $usuario->senha || md5($senha) === $usuario->senha) {
             $senha_valida = true;
-        } elseif ($senha === 'Password@123') {
-            $senha_valida = true;
         }
 
         if ($senha_valida) {
@@ -87,3 +85,4 @@ class Usuarios_model extends CI_Model
         return null;
     }
 }
+

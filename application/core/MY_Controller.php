@@ -9,10 +9,6 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct();
 
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
         $this->load->library('session');
         $this->load->helper('url');
 
@@ -54,5 +50,16 @@ class MY_Controller extends CI_Controller
     protected function isGerente()
     {
         return isset($this->usuario_logado['perfil']) && in_array($this->usuario_logado['perfil'], array('admin', 'gerente'));
+    }
+
+    /**
+     * Bloqueia cadastro/edicao para perfis sem permissao (ex.: atendente)
+     */
+    protected function exigirGerente($voltar_para)
+    {
+        if (!$this->isGerente()) {
+            $this->session->set_flashdata('error_msg', 'Apenas Administradores e Gerentes podem cadastrar ou editar o catálogo.');
+            redirect(base_url($voltar_para));
+        }
     }
 }
