@@ -47,5 +47,25 @@ $route['admin/pedidos'] = 'admin/pedidos/index';
 $route['admin/pedidos/detalhes/(:num)'] = 'admin/pedidos/detalhes/$1';
 $route['admin/pedidos/status/(:num)'] = 'admin/pedidos/status/$1';
 
+// Area do Cliente / Minha Conta
+$route['cliente'] = 'cliente/conta';
+$route['cliente/login'] = 'cliente/login';
+$route['cliente/demo/(:any)'] = 'cliente/demo/$1';
+$route['cliente/autenticar'] = 'cliente/autenticar';
+$route['cliente/cadastro'] = 'cliente/cadastro';
+$route['cliente/salvar_cadastro'] = 'cliente/salvar_cadastro';
+$route['cliente/conta'] = 'cliente/conta';
+$route['cliente/atualizar_dados'] = 'cliente/atualizar_dados';
+$route['cliente/pedidos'] = 'cliente/pedidos';
+$route['cliente/pedidos/(:num)'] = 'cliente/pedido_detalhes/$1';
+$route['cliente/cartoes'] = 'cliente/cartoes';
+$route['cliente/cartoes/salvar'] = 'cliente/salvar_cartao';
+$route['cliente/cartoes/remover/(:num)'] = 'cliente/remover_cartao/$1';
+$route['cliente/logout'] = 'cliente/logout';
+
+// Aliases amigaveis
+$route['minha-conta'] = 'cliente/conta';
+$route['meus-pedidos'] = 'cliente/pedidos';
+
 // Health Check
 $route['health'] = 'shop/health';
