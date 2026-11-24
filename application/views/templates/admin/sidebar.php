@@ -34,7 +34,7 @@
 	</li>
 
 	<!-- Nav Item - Perfumes -->
-	<li class="nav-item <?= (strtolower($this->uri->segment(2)) === 'perfume') ? 'active' : '' ?>">
+	<li class="nav-item <?= (strtolower((string) $this->uri->segment(2)) === 'perfume') ? 'active' : '' ?>">
 		<a class="nav-link" href="<?= base_url('admin/perfume') ?>">
 			<i class="fas fa-fw fa-spray-can text-info"></i>
 			<span>Catálogo de Perfumes</span>
@@ -42,7 +42,7 @@
 	</li>
 
 	<!-- Nav Item - Marcas -->
-	<li class="nav-item <?= (strtolower($this->uri->segment(2)) === 'marca') ? 'active' : '' ?>">
+	<li class="nav-item <?= (strtolower((string) $this->uri->segment(2)) === 'marca') ? 'active' : '' ?>">
 		<a class="nav-link" href="<?= base_url('admin/marca') ?>">
 			<i class="fas fa-fw fa-tags text-success"></i>
 			<span>Marcas</span>
@@ -50,7 +50,7 @@
 	</li>
 
 	<!-- Nav Item - Clientes -->
-	<li class="nav-item <?= (strtolower($this->uri->segment(2)) === 'cliente') ? 'active' : '' ?>">
+	<li class="nav-item <?= (strtolower((string) $this->uri->segment(2)) === 'cliente') ? 'active' : '' ?>">
 		<a class="nav-link" href="<?= base_url('admin/cliente') ?>">
 			<i class="fas fa-fw fa-users text-light"></i>
 			<span>Clientes</span>

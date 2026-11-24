@@ -39,6 +39,8 @@ class Perfume extends MY_Controller
 
 	public function novo()
 	{
+		$this->exigirGerente('admin/perfume');
+
 		// $dados["titulo"] = "Sistemas/Aplicativos";
 		$dados['marcas'] = $this->Marca_model->buscaMarcas();
 
@@ -55,6 +57,8 @@ class Perfume extends MY_Controller
 
 	public function create()
 	{
+		$this->exigirGerente('admin/perfume');
+
 		$config = $this->configurarUpload(); // Configuração do upload
 
 		// Verifica se o upload foi bem-sucedido
@@ -92,7 +96,13 @@ class Perfume extends MY_Controller
 
 	public function edit($id)
 	{
+		$this->exigirGerente('admin/perfume');
+
 		$dados['perfume'] = $this->Perfume_model->buscaperfumePorId($id);
+		if (!$dados['perfume']) {
+			$this->session->set_flashdata('error_msg', 'Perfume não encontrado.');
+			redirect(base_url('admin/perfume'));
+		}
 		$dados['marcas'] = $this->Marca_model->buscaMarcas();
 
 		$dados['subview'] = 'admin/perfume/insertEdit';
@@ -105,6 +115,8 @@ class Perfume extends MY_Controller
 
 	public function update($id)
 	{
+		$this->exigirGerente('admin/perfume');
+
 		$perfume = array(
 			"nome" => $this->input->post("nome"),
 			"descricao_info" => $this->input->post("descricao_info"),

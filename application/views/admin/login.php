@@ -1,172 +1,106 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= isset($titulo) ? $titulo : 'Login Administrativo | Fragance Euphoria' ?></title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title><?= isset($titulo) ? $titulo : 'Login Administrativo | Fragance Euphoria' ?></title>
 
-    <!-- Bootstrap 4.6 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <!-- FontAwesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<!-- Mesmo tema do painel (SB Admin 2) -->
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	<link href="<?= base_url() ?>assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/6739ae1e1b.js" crossorigin="anonymous"></script>
 
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: linear-gradient(135deg, #180d24 0%, #301740 50%, #0d0614 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            color: #2e1a38;
-        }
-        .login-card {
-            background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
-            width: 100%;
-            max-width: 480px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-        }
-        .login-header {
-            background: #1e0d2e;
-            color: #ffffff;
-            padding: 32px 24px;
-            text-align: center;
-            border-bottom: 3px solid #d4af37;
-            position: relative;
-        }
-        .brand-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.9rem;
-            color: #f7d57f;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-        }
-        .login-body {
-            padding: 30px 28px;
-        }
-        .btn-gold {
-            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
-            color: #ffffff;
-            border: none;
-            font-weight: 600;
-            padding: 12px;
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-        .btn-gold:hover {
-            background: linear-gradient(135deg, #e5c158 0%, #c99719 100%);
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.35);
-        }
-        .demo-box {
-            background: #faf7fc;
-            border: 1px dashed #d6c5e2;
-            border-radius: 12px;
-            padding: 16px;
-            margin-top: 24px;
-        }
-        .demo-btn {
-            font-size: 0.84rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            padding: 10px 14px;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            text-decoration: none !important;
-        }
-        .demo-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-        }
-    </style>
+	<style>
+		.bg-login-image {
+			background: #fff url("<?= base_url('assets/img/good_girl.jpg') ?>") no-repeat center;
+			background-size: contain;
+		}
+
+		.demo-btn {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			font-size: .8rem;
+		}
+	</style>
 </head>
-<body>
 
-<div class="login-card">
-    <div class="login-header">
-        <i class="fa-solid fa-gem mb-2" style="font-size: 2.4rem; color: #d4af37;"></i>
-        <h3 class="brand-title">Fragance Euphoria</h3>
-        <small class="text-light opacity-75">Painel de Gestão e E-commerce</small>
-    </div>
+<body class="bg-gradient-primary">
 
-    <div class="login-body">
-        <?php if ($this->session->flashdata('erro')): ?>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-circle-exclamation mr-1"></i> <?= $this->session->flashdata('erro') ?>
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-            </div>
-        <?php endif; ?>
+	<div class="container">
 
-        <?php if ($this->session->flashdata('sucesso')): ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-circle-check mr-1"></i> <?= $this->session->flashdata('sucesso') ?>
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-            </div>
-        <?php endif; ?>
+		<div class="row justify-content-center">
 
-        <form action="<?= base_url('admin/auth/entrar') ?>" method="POST">
-            <div class="form-group">
-                <label for="email" class="font-weight-bold text-muted small text-uppercase">
-                    <i class="fa-solid fa-envelope mr-1 text-warning"></i> E-mail Corporativo
-                </label>
-                <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="seu.email@fragance.com" required>
-            </div>
+			<div class="col-xl-10 col-lg-12 col-md-9">
 
-            <div class="form-group mb-4">
-                <label for="senha" class="font-weight-bold text-muted small text-uppercase">
-                    <i class="fa-solid fa-lock mr-1 text-warning"></i> Senha de Acesso
-                </label>
-                <input type="password" class="form-control form-control-lg" id="senha" name="senha" placeholder="••••••••" required>
-            </div>
+				<div class="card o-hidden border-0 shadow-lg my-5">
+					<div class="card-body p-0">
+						<div class="row">
+							<div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+							<div class="col-lg-6">
+								<div class="p-5">
+									<div class="text-center">
+										<h1 class="h4 text-gray-900 mb-1">Fragance Euphoria</h1>
+										<p class="small text-gray-600 mb-4">Painel de Gestão e E-commerce</p>
+									</div>
 
-            <button type="submit" class="btn btn-gold btn-block btn-lg shadow-sm">
-                <i class="fa-solid fa-right-to-bracket mr-2"></i> Acessar Painel
-            </button>
-        </form>
+									<?php if ($this->session->flashdata('erro')) : ?>
+										<div class="alert alert-danger small text-center"><?= $this->session->flashdata('erro') ?></div>
+									<?php endif; ?>
 
-        <div class="demo-box">
-            <div class="d-flex align-items-center mb-2">
-                <i class="fa-solid fa-bolt text-warning mr-2"></i>
-                <strong class="text-dark" style="font-size: 0.9rem;">Perfis de Demonstração (1 Clique)</strong>
-            </div>
-            <p class="text-muted small mb-3">Escolha um perfil para autenticar instantaneamente:</p>
+									<?php if ($this->session->flashdata('sucesso')) : ?>
+										<div class="alert alert-success small text-center"><?= $this->session->flashdata('sucesso') ?></div>
+									<?php endif; ?>
 
-            <a href="<?= base_url('admin/auth/demo/admin') ?>" class="btn btn-outline-danger btn-block demo-btn">
-                <span><i class="fa-solid fa-crown mr-2"></i> Administrador Geral</span>
-                <span class="badge badge-danger">Acesso Total</span>
-            </a>
+									<form class="user" action="<?= base_url('admin/auth/entrar') ?>" method="POST">
+										<div class="form-group">
+											<input type="email" class="form-control form-control-user" name="email" placeholder="E-mail" required>
+										</div>
+										<div class="form-group">
+											<input type="password" class="form-control form-control-user" name="senha" placeholder="Senha" required>
+										</div>
+										<button type="submit" class="btn btn-primary btn-user btn-block">
+											Entrar
+										</button>
+									</form>
 
-            <a href="<?= base_url('admin/auth/demo/gerente') ?>" class="btn btn-outline-primary btn-block demo-btn">
-                <span><i class="fa-solid fa-boxes-packing mr-2"></i> Gerente de Vendas</span>
-                <span class="badge badge-primary">Gestão</span>
-            </a>
+									<hr>
 
-            <a href="<?= base_url('admin/auth/demo/atendente') ?>" class="btn btn-outline-success btn-block demo-btn mb-0">
-                <span><i class="fa-solid fa-headset mr-2"></i> Atendente de Loja</span>
-                <span class="badge badge-success">Atendimento</span>
-            </a>
-        </div>
+									<p class="small text-gray-600 text-center mb-2">Entrar com perfil de demonstração</p>
 
-        <div class="text-center mt-4">
-            <a href="<?= base_url('shop') ?>" class="text-muted small">
-                <i class="fa-solid fa-arrow-left mr-1"></i> Ir para a Loja Virtual (Vitrine Pública)
-            </a>
-        </div>
-    </div>
-</div>
+									<a href="<?= base_url('admin/auth/demo/admin') ?>" class="btn btn-outline-danger btn-user btn-block demo-btn">
+										<span><i class="fas fa-crown fa-fw mr-1"></i> Administrador</span>
+										<span class="badge badge-danger">Acesso total</span>
+									</a>
+									<a href="<?= base_url('admin/auth/demo/gerente') ?>" class="btn btn-outline-primary btn-user btn-block demo-btn">
+										<span><i class="fas fa-boxes fa-fw mr-1"></i> Gerente de Vendas</span>
+										<span class="badge badge-primary">Gestão</span>
+									</a>
+									<a href="<?= base_url('admin/auth/demo/atendente') ?>" class="btn btn-outline-success btn-user btn-block demo-btn">
+										<span><i class="fas fa-headset fa-fw mr-1"></i> Atendente de Loja</span>
+										<span class="badge badge-success">Consulta</span>
+									</a>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+									<hr>
+
+									<div class="text-center">
+										<a class="small" href="<?= base_url('shop') ?>"><i class="fas fa-arrow-left fa-sm mr-1"></i> Voltar para a loja</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
 </body>
+
 </html>

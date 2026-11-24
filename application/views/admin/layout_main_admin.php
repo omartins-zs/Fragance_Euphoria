@@ -46,17 +46,21 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
-					<?php if ($this->session->flashdata('error_msg')) : ?>
-						<div class="alert alert-danger">
-							<?= $this->session->flashdata('error_msg'); ?>
-						</div>
-					<?php endif; ?>
-					
-					<?php if ($this->session->flashdata('success')) : ?>
-						<div class="alert alert-success">
-							<?= $this->session->flashdata('success'); ?>
-						</div>
-					<?php endif; ?>
+					<?php foreach (array('error_msg', 'erro') as $chave) : ?>
+						<?php if ($this->session->flashdata($chave)) : ?>
+							<div class="alert alert-danger">
+								<?= $this->session->flashdata($chave); ?>
+							</div>
+						<?php endif; ?>
+					<?php endforeach; ?>
+
+					<?php foreach (array('success', 'sucesso') as $chave) : ?>
+						<?php if ($this->session->flashdata($chave)) : ?>
+							<div class="alert alert-success">
+								<?= $this->session->flashdata($chave); ?>
+							</div>
+						<?php endif; ?>
+					<?php endforeach; ?>
 
 					<?php $this->load->view($subview); ?>
 

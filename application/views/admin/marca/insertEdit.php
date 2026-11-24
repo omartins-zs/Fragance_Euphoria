@@ -11,11 +11,11 @@
 		<?php endif; ?>
 				<div class="form-group">
 					<label class="small mb-1" for="inputUsername">Marcas</label>
-					<input class="form-control" type="text" value="<?= $marca->nome ?>" name="nome"></input>
+					<input class="form-control" type="text" value="<?= html_escape($marca->nome ?? ''); ?>" name="nome" required></input>
 				</div>
 				<div class="form-group">
 					<label class="small mb-1" for="inputUsername">País de Origem</label>
-					<input class="form-control" type="text" value="<?= $marca->pais_origem ?>" name="pais_origem"></input>
+					<input class="form-control" type="text" value="<?= html_escape($marca->pais_origem ?? ''); ?>" name="pais_origem"></input>
 				</div>
 				<?php if (isset($marca->id)) { ?>
 					<button class="btn btn-primary" type="submit">Atualizar marca</button>

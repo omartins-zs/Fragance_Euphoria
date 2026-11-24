@@ -25,6 +25,8 @@ class Marca extends MY_Controller
 
 	public function novo()
 	{
+		$this->exigirGerente('admin/marca');
+
 		// $dados["titulo"] = "Sistemas/Aplicativos";
 
 		$dados['subview'] = 'admin/marca/insertEdit';
@@ -36,6 +38,8 @@ class Marca extends MY_Controller
 
 	public function create()
 	{
+		$this->exigirGerente('admin/marca');
+
 		$marca = array(
 			"nome" => $this->input->post("nome"),
 			"pais_origem" => $this->input->post("pais_origem")
@@ -49,7 +53,13 @@ class Marca extends MY_Controller
 
 	public function edit($id)
 	{
+		$this->exigirGerente('admin/marca');
+
 		$dados['marca'] = $this->Marca_model->buscaMarcaPorId($id);
+		if (!$dados['marca']) {
+			$this->session->set_flashdata('error_msg', 'Marca não encontrada.');
+			redirect(base_url('admin/marca'));
+		}
 
 		$dados['subview'] = 'admin/marca/insertEdit';
 
@@ -66,6 +76,8 @@ class Marca extends MY_Controller
 
 	public function update($id)
 	{
+		$this->exigirGerente('admin/marca');
+
 		$marca = array(
 			"nome" => $this->input->post("nome"),
 			"pais_origem" => $this->input->post("pais_origem")
