@@ -75,9 +75,11 @@ class Pedido_model extends CI_Model
      */
     public function get_itens_by_pedido($pedido_id)
     {
-        $this->db->where('pedido_id', (int) $pedido_id);
-        $query = $this->db->get($this->table_itens);
-        return $query->result();
+        $this->db->select('itens_pedido.*, perfumes.imagem, perfumes.tipo, perfumes.volume');
+        $this->db->from($this->table_itens);
+        $this->db->join('perfumes', 'itens_pedido.perfume_id = perfumes.id', 'left');
+        $this->db->where('itens_pedido.pedido_id', (int) $pedido_id);
+        return $this->db->get()->result();
     }
 
     /**
