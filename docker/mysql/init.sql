@@ -1,4 +1,5 @@
 -- Database initialization for Fragance Euphoria
+SET NAMES utf8mb4;
 CREATE DATABASE IF NOT EXISTS `fragance_euphoria_bd` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `fragance_euphoria_bd`;
 
@@ -96,9 +97,9 @@ DELETE FROM `usuarios`;
 -- Senha padrao: Password@123
 -- --------------------------------------------------------
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `perfil`, `ativo`) VALUES
-(1, 'Administrador Fragance', 'admin@fragance.com', '$2y$10$eA0q4oR7e4e1aQvQfG5Vn.jP8t2vG9FfC4hH8tI7L7M7O7P7Q7R7S', 'admin', 1),
-(2, 'Gerente de Vendas', 'gerente@fragance.com', '$2y$10$eA0q4oR7e4e1aQvQfG5Vn.jP8t2vG9FfC4hH8tI7L7M7O7P7Q7R7S', 'gerente', 1),
-(3, 'Atendente de Loja', 'atendente@fragance.com', '$2y$10$eA0q4oR7e4e1aQvQfG5Vn.jP8t2vG9FfC4hH8tI7L7M7O7P7Q7R7S', 'atendente', 1);
+(1, 'Administrador Fragance', 'admin@fragance.com', '$2y$10$QCqRjJRhF886QyuEebfNW.0dEYkTZ3SYwYp/7mmn3HtvwWuvukWtq', 'admin', 1),
+(2, 'Gerente de Vendas', 'gerente@fragance.com', '$2y$10$QCqRjJRhF886QyuEebfNW.0dEYkTZ3SYwYp/7mmn3HtvwWuvukWtq', 'gerente', 1),
+(3, 'Atendente de Loja', 'atendente@fragance.com', '$2y$10$QCqRjJRhF886QyuEebfNW.0dEYkTZ3SYwYp/7mmn3HtvwWuvukWtq', 'atendente', 1);
 
 -- --------------------------------------------------------
 -- Seed de clientes
@@ -118,7 +119,9 @@ INSERT INTO `marcas` (`id`, `nome`, `pais_origem`) VALUES
 (5, 'Piment Cosméticos', 'Brasil'),
 (6, 'Paco Rabanne', 'Espanha'),
 (7, 'Dior', 'França'),
-(8, 'Chanel', 'França');
+(8, 'Chanel', 'França'),
+(9, 'Calvin Klein', 'Estados Unidos'),
+(10, 'Le Labo', 'Estados Unidos');
 
 -- --------------------------------------------------------
 -- Seed de perfumes
@@ -131,7 +134,11 @@ INSERT INTO `perfumes` (`id`, `nome`, `descricao_info`, `marca`, `tipo`, `volume
 (5, 'One Million', 'Aromático amadeirado potente com notas de toranja, hortelã-pimenta, rosa e couro.', 6, 'Masculino', 100, 508.90, 14, 'perfume-masc-one-million.jpg'),
 (6, 'Olympéa', 'Fragrância celestial feminina que mistura baunilha salgada, jasmim hidropônico e mandarina verde.', 6, 'Feminino', 80, 445.00, 20, 'Olympea.jpg'),
 (7, 'Sauvage Eau de Parfum', 'Fragrância masculina nobre e selvagem com bergamota da Calábria e absoluto de baunilha da Papua Nova Guiné.', 7, 'Masculino', 100, 689.00, 6, 'perfume-masc-ferrari.jpg'),
-(8, 'Vodka Man', 'Fragrância aromática elegante com excelente projeção e fixação para o dia a dia.', 1, 'Masculino', 100, 89.90, 25, 'perfume-vodka-sem-fundo.png');
+(8, 'Vodka Man', 'Fragrância aromática elegante com excelente projeção e fixação para o dia a dia.', 1, 'Masculino', 100, 89.90, 25, 'perfume-vodka-sem-fundo.png'),
+(9, 'CK One', 'Fragrância cítrica e aromática feita para ser compartilhada, com bergamota, chá verde e almíscar.', 9, 'Unissex', 200, 329.90, 18, 'unissex-ck-one.svg'),
+(10, 'Gris Dior', 'Chypre floral elegante com rosa de Damasco, patchouli e musgo de carvalho.', 7, 'Unissex', 125, 1450.00, 6, 'unissex-gris-dior.svg'),
+(11, 'Sycomore', 'Amadeirado esfumaçado com vetiver, sândalo e cipreste, da coleção Les Exclusifs.', 8, 'Unissex', 75, 1390.00, 4, 'unissex-sycomore.svg'),
+(12, 'Santal 33', 'Sândalo australiano, cardamomo, íris e couro em uma assinatura amadeirada icônica.', 10, 'Unissex', 100, 2190.00, 3, 'unissex-santal-33.svg');
 
 -- --------------------------------------------------------
 -- Seed de pedidos de demonstracao
@@ -144,3 +151,4 @@ INSERT INTO `itens_pedido` (`id`, `pedido_id`, `perfume_id`, `nome_produto`, `qu
 (1, 1, 1, 'Good Girl', 1, 575.00, 575.00),
 (2, 1, 2, 'Quasar Graffiti', 1, 144.90, 144.90),
 (3, 2, 6, 'Olympéa', 1, 445.00, 445.00);
+
