@@ -23,6 +23,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 .env
 .env.local
 .env.*.local
+docker-compose.override.yml
 
 # IDE Files
 #-------------------------
